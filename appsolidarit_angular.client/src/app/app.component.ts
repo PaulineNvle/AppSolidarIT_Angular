@@ -1,4 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 interface WeatherForecast {
@@ -9,6 +10,8 @@ interface WeatherForecast {
 }
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, HttpClientModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -23,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   getForecasts() {
-    this.http.get<WeatherForecast[]>('/weatherforecast').subscribe(
+    this.http.get<WeatherForecast[]>('/weatherforecast').subscribe( //changer de weatherforecast par product
       (result) => {
         this.forecasts = result;
       },

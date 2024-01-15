@@ -19,7 +19,7 @@ namespace AppSolidarIT_Angular.Server.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<WeatherForecast> Get() //action result
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
