@@ -1,0 +1,15 @@
+<h2 class="products_title">Choissiez parmis nos différents services :</h2>
+
+
+
+<div class="cards">
+  <article *ngFor="let p of products" class="information">
+    <h2 class="label">{{p.Label}}</h2>
+    <span>{{p.DescriptionShort}}</span>
+    <button type="button" class="button">Cliquez ici pour plus de details</button>
+  </article>
+</div>
+
+<div>
+  <button  type="button" class="button">Retour à la page précédente</button>
+</div>

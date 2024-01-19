@@ -7,4 +7,7 @@
     <!-- Folder where production build objects will be placed -->
     <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist\appsolidarit_angular.client\</PublishAssetsDirectory>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="src\app\products - Copy.ts" />
+  </ItemGroup>
 </Project>

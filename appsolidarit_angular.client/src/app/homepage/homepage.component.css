@@ -1,0 +1,48 @@
+
+ul {
+  list-style: none;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 90%;
+  max-width: 1000px;
+  margin: 10vh auto;
+}
+
+.card {
+  border-radius: 16px;
+  box-shadow: 0 30px 30px -25px rgba(#4133B7, .25);
+  max-width: 300px;
+}
+
+.information {
+  background-color: var(--c-white);
+  padding: 1.5rem;
+}
+
+.image {
+  width: 70px;
+  height: 70px;
+  list-style-type: none;
+  text-align: center;
+}
+
+.button {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+ul:hover {
+  cursor: pointer;
+}
