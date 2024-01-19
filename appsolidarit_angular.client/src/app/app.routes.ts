@@ -1,23 +1,28 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import ProductsComponent from './components/products/products.component';
+import HomepageComponent from './components/homepage/homepage.component';
+import DetailsComponent from './components/details/details.component';
 
 export const routes: Routes = [
 
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    'path': 'homepage',
-    title:'Accueil',
-    loadComponent:() => import('./homepage/homepage.component')
+    path: '',
+    component: HomepageComponent,
+    //loadComponent: () => import('./components/homepage/homepage.component'),
+    pathMatch: 'full',
   },
   {
-    'path': 'products',
+    path: 'products',
     title: 'Nos services',
-    loadComponent: () => import('./products/products.component')
+    component: ProductsComponent
+    //loadComponent: () => import('./products/products.component')
   },
   {
     'path': 'details',
     title: 'Détails du service',
-    loadComponent: () => import('./details/details.component')
+    component: DetailsComponent,
+   //loadComponent: () => import('./details/details.component')
   },
 
 ];

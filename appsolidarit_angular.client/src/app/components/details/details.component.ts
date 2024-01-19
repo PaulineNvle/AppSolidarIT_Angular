@@ -1,8 +1,8 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 
-import { PRODUCTS } from '../mock-products';
 import { Router, RouterModule } from '@angular/router';
+import { PRODUCTS } from '../../mock-products';
 
 
 

@@ -1,8 +1,9 @@
-import { CommonModule, UpperCasePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
-import { PRODUCTS } from '../mock-products';
+
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { PRODUCTS } from '../../mock-products';
 
 
 
@@ -17,16 +18,14 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
     RouterModule
   ]
 })
-export default class ProductsComponent implements OnInit {
+export default class ProductsComponent{
   products = PRODUCTS
 
 
   productDetail?: any;
 
   constructor(private route: ActivatedRoute) { }
-    ngOnInit(): void {
-        throw new Error('Method not implemented.');
-    }
+
 
   
  

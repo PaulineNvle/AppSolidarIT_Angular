@@ -1,7 +1,8 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule} from '@angular/router';
-import { THEMES } from '../mock-theme';
+import { THEMES } from '../../mock-theme';
+
 
 
 

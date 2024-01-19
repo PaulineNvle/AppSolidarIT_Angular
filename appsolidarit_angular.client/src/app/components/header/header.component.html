@@ -5,25 +5,21 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span>
-    <button>
+    <button routerLink="">
       <img src="../../assets/img/logoLong.png" width="150px" height="auto"/>
     </button>
   </span>
   <span class="example-spacer"></span>
-  <a>
-    <button mat-raised-button color="antiquewhite">
+  <a routerLink="/products">Products</a>
+    <!--<button mat-raised-button color="antiquewhite">
       Products
-      <!--<a [routerLink]="ProductsComponent">{{ ProductsComponent }}</a>-->
-    </button>
-
-  </a>
+      <a routerLink="products">ProductsComponent</a>
+    </button>-->
   <a>
-
-    <button mat-raised-button color="antiquewhite">
+    <button mat-raised-button color="antiquewhite" routerLink="details">
       Details
     </button>
   </a>
- 
   <button mat-icon-button class="example-icon favorite-icon">
     <img src="../../assets/img/baseline_logout_black_24dp.png" />
   </button>
