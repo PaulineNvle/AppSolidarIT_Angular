@@ -1,0 +1,31 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.button .img {
+    border-style:none;
+    background: none;
+}
+.active {
+    color:red;
+    text-decoration:underline;
+}
+.partOne {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.mat-side-nav-container{
+    height: calc(205vh -115vh);
+
+}
+.mat-sidenav {
+  width: 200px;
+  background-color: lightgray;
+  opacity: 0.6;
+  list-style-type: none;
+  height: fit-content;
+}
+

@@ -9,20 +9,20 @@ export const routes: Routes = [
   {
     path: '',
     component: HomepageComponent,
-    //loadComponent: () => import('./components/homepage/homepage.component'),
+
     pathMatch: 'full',
   },
   {
     path: 'products',
     title: 'Nos services',
     component: ProductsComponent
-    //loadComponent: () => import('./products/products.component')
+
   },
   {
     'path': 'details',
     title: 'Détails du service',
     component: DetailsComponent,
-   //loadComponent: () => import('./details/details.component')
+
   },
 
 ];

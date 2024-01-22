@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import {  HttpClientModule } from '@angular/common/http';
+import {  Component } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { HeaderComponent } from './components/navigation/header/header.component';
+import { SidenavComponent } from './components/navigation/sidenav/sidenav.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { FormsModule } from '@angular/forms';
 
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
 
 
 @Component({
@@ -16,8 +16,11 @@ import { HeaderComponent } from './components/header/header.component';
     HttpClientModule,
     RouterModule,
     HeaderComponent,
+    SidenavComponent,
     RouterLinkActive,
-    RouterLink
+    RouterLink,
+    MatSidenavModule,
+    FormsModule
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,4 +28,6 @@ import { HeaderComponent } from './components/header/header.component';
 })
 export class AppComponent {
   title = 'Portfolio SolidarIT';
+
+
 }

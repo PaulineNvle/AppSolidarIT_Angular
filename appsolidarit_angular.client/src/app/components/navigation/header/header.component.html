@@ -1,0 +1,41 @@
+
+
+<mat-toolbar>
+   
+    <span ></span>
+    <span class="logo-container">
+      <button mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
+      <button routerLink="">
+        <img src="../../assets/img/logoLong.png" width="150px" height="auto" />
+      </button>
+    </span>
+    <span class="example-spacer">
+      <button mat-raised-button color="antiquewhite" routerLink="/products">
+        Products
+      </button>
+      <button mat-raised-button color="antiquewhite" routerLink="details">
+        Details
+      </button>
+    </span>
+
+    <button mat-icon-button class="example-icon favorite-icon">
+      <img src="../../assets/img/baseline_logout_black_24dp.png" />
+    </button>
+    <button mat-icon-button class="example-icon">
+      <img src="../../assets/img/baseline_account_circle_black_24dp.png" />
+    </button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="push">
+    <li routerLink="">Page d'accueil</li>
+    <li routerLink="/products">Nos produits</li>
+    <li routerLink="details">Nos services</li>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    end
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+

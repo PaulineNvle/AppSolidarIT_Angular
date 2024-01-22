@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@angular/material": "^17.0.5"
+    "@angular/material": "^17.0.5",
+    "hamburgers": "^1.2.1"
   }
 }

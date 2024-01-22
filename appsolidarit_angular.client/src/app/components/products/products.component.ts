@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-
-
+import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PRODUCTS } from '../../mock-products';
 
@@ -25,8 +23,4 @@ export default class ProductsComponent{
   productDetail?: any;
 
   constructor(private route: ActivatedRoute) { }
-
-
-  
- 
 }
