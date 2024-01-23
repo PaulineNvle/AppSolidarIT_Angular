@@ -1,38 +1,47 @@
 
 
-<mat-toolbar>
-   
-    <span ></span>
-    <span class="logo-container">
-      <button mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
-      <button routerLink="">
-        <img src="../../assets/img/logoLong.png" width="150px" height="auto" />
-      </button>
-    </span>
-    <span class="example-spacer">
-      <button mat-raised-button color="antiquewhite" routerLink="/products">
-        Products
-      </button>
-      <button mat-raised-button color="antiquewhite" routerLink="details">
-        Details
-      </button>
-    </span>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button class="burger" mat-mini-fab (click)="opened=!opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img class="logo" src="../../../../assets/img/Logo_Solidaris_FR_2022_CMYK.svg" routerLink="" />
+    <div class="container">
+      <span class="stuff">
+        <button routerLink="" class="little">
+          <span class="material-symbols-outlined">home</span>
+        </button>
+        <button class="little">
+          <span class="material-symbols-outlined">exit_to_app</span>
+        </button>
+        <button class="little">
+          <span class="material-symbols-outlined">account_box</span>
+        </button>
+      </span>
 
-    <button mat-icon-button class="example-icon favorite-icon">
-      <img src="../../assets/img/baseline_logout_black_24dp.png" />
-    </button>
-    <button mat-icon-button class="example-icon">
-      <img src="../../assets/img/baseline_account_circle_black_24dp.png" />
-    </button>
+      <span>
+        <button mat-raised-button color="antiquewhite" routerLink="/products" class="btn first">
+          Products
+        </button>
+        <button mat-raised-button color="antiquewhite" routerLink="details" class="btn second">
+          Details
+        </button>
+      </span>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
+
+
 <mat-sidenav-container>
-  <mat-sidenav [(opened)]="opened" mode="push">
+  <mat-sidenav [(opened)]="opened" mode="side">
+
     <li routerLink="">Page d'accueil</li>
     <li routerLink="/products">Nos produits</li>
-    <li routerLink="details">Nos services</li>
+    <li routerLink="/details">Nos services</li>
   </mat-sidenav>
   <mat-sidenav-content>
     end
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 

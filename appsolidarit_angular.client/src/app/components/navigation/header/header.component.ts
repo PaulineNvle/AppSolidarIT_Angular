@@ -3,8 +3,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
-import { SidenavComponent } from '../sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { FormsModule } from '@angular/forms';
 
 
 /**
@@ -20,7 +20,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatIconModule,
     RouterLink,
     MatSidenavModule,
-    SidenavComponent]
+    FormsModule]
 })
 export class HeaderComponent {
   opened = false;

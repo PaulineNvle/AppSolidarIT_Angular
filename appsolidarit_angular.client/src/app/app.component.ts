@@ -3,7 +3,6 @@ import {  HttpClientModule } from '@angular/common/http';
 import {  Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/navigation/header/header.component';
-import { SidenavComponent } from './components/navigation/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
 
@@ -16,7 +15,6 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     RouterModule,
     HeaderComponent,
-    SidenavComponent,
     RouterLinkActive,
     RouterLink,
     MatSidenavModule,

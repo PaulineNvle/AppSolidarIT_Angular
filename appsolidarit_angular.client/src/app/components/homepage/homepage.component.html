@@ -5,6 +5,8 @@
 <div class="cards">
   <article *ngFor="let t of themes" class="information,card">
     <h2 class="name">{{t.Name}}</h2>
-    <button type="button" routerlink="details" class="button"><img class="image" src=" {{ t.Image }}" /></button>
+    <button type="button" routerlink="details" class="button">
+      <img class="image" src=" {{ t.Image }}" />
+    </button>
   </article>
 </div>

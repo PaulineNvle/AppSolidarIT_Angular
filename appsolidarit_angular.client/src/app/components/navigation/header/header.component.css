@@ -1,31 +1,111 @@
-.example-spacer {
-  flex: 1 1 auto;
+mat-toolbar {
+  background-color: #ffff;
 }
 
-.button .img {
-    border-style:none;
-    background: none;
-}
-.active {
-    color:red;
-    text-decoration:underline;
-}
-.partOne {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.mat-side-nav-container{
-    height: calc(205vh -115vh);
 
+mat-side-nav-container {
+  height: calc(205vh - 115vh);
 }
+
 .mat-sidenav {
   width: 200px;
-  background-color: lightgray;
+  background-color: #ffff;
   opacity: 0.6;
   list-style-type: none;
-  height: fit-content;
+  cursor: pointer;
 }
 
+mat-sidenav-content {
+}
+
+
+
+button {
+  cursor: pointer;
+}
+
+.logo {
+  max-width: 240px;
+  height: 42px;
+}
+
+  .logo:hover {
+    cursor: pointer;
+  }
+
+/* burger */
+.burger {
+  background: none;
+  border-style: none;
+  border-radius: 5px;
+  border-color: #c1002a;
+  color: #c1002a;
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+}
+
+  .burger:hover {
+    background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-position: 0;
+  }
+
+
+
+/* button home - logout - profile */
+
+.little {
+  background: none;
+  border-style: none;
+  border-radius: 5px;
+  border-color: #c1002a;
+  color: #c1002a;
+
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+}
+
+  .little:hover {
+    background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-position: 0;
+  }
+
+/* button products */
+
+.first {
+  border-radius: 10px;
+  border-color: #f2d9da;
+  color: #fff;
+  background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+  background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+}
+
+  .first:hover {
+    background-position: 0;
+  }
+
+  /* button services */
+.second {
+  border-radius: 10px;
+  border-color: #c1002a;
+  color: #f2d9da;
+  background-image: -webkit-linear-gradient(45deg, #c1002a 50%, transparent 50%);
+  background-image: linear-gradient(45deg, #c1002a 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+}
+
+  .second:hover {
+    background-position: 0;
+  }
