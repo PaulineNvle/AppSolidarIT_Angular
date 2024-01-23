@@ -1,7 +1,9 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { THEMES } from '../../mock-theme';
+import { MatCardModule } from "@angular/material/card";
+
 
 
 
@@ -15,10 +17,11 @@ import { THEMES } from '../../mock-theme';
   imports: [HomepageComponent,
     UpperCasePipe,
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatCardModule
   ]
 })
 export default class HomepageComponent {
-  themes = THEMES
+  themes = THEMES;
   title = 'Page d\'accueil';
 }

@@ -2,13 +2,15 @@
 
 
 
-<div class="cards">
+<div class="card">
   <article *ngFor="let p of products" class="information">
     <h2 class="label">{{p.Label}}</h2>
     <span>{{p.DescriptionShort}}</span>
     <button routerLink="/details" type="button" class="button">Cliquez ici pour plus de details</button>
   </article>
 </div>
+
+
 
 <div>
   <button routerLink="" type="button" class="button">Retour à la page précédente</button>

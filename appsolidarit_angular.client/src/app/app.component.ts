@@ -5,6 +5,8 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
+import HomepageComponent from './components/homepage/homepage.component';
+
 
 
 
@@ -15,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     RouterModule,
     HeaderComponent,
+    HomepageComponent,
     RouterLinkActive,
     RouterLink,
     MatSidenavModule,

@@ -1,12 +1,17 @@
-<h2 class="homepage_title">Bienvenue chez SolidarIT !</h2>
 
 
+  <h2 class="homepage_title">Bienvenue chez SolidarIT !</h2>
 
-<div class="cards">
-  <article *ngFor="let t of themes" class="information,card">
-    <h2 class="name">{{t.Name}}</h2>
-    <button type="button" routerlink="details" class="button">
-      <img class="image" src=" {{ t.Image }}" />
-    </button>
-  </article>
-</div>
+
+  <div class="container">
+    <div class="card" *ngFor="let t of themes">
+      <div class="name">
+        <h2>{{t.Name}}</h2>
+      </div>
+      <div>
+        <button type="button" routerlink="details" class="button zoom">
+          <img class="image" src=" {{ t.Image }}" />
+        </button>
+      </div>
+    </div>
+  </div>

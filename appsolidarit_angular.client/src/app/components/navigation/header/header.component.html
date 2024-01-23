@@ -11,10 +11,10 @@
         <button routerLink="" class="little">
           <span class="material-symbols-outlined">home</span>
         </button>
-        <button class="little">
+        <button routerLink="" class="little">
           <span class="material-symbols-outlined">exit_to_app</span>
         </button>
-        <button class="little">
+        <button routerLink="" class="little">
           <span class="material-symbols-outlined">account_box</span>
         </button>
       </span>
@@ -30,18 +30,20 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-
-
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">
-
-    <li routerLink="">Page d'accueil</li>
-    <li routerLink="/products">Nos produits</li>
-    <li routerLink="/details">Nos services</li>
+    <ul>
+      <li routerLink="">Page d'accueil</li>
+      <li routerLink="/products">Nos produits</li>
+      <li routerLink="/details">Nos services</li>
+    </ul>
   </mat-sidenav>
   <mat-sidenav-content>
-    end
-
+    <ul>
+      <li>faut</li>
+      <li>allonger</li>
+      <li>ici</li>
+    </ul>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

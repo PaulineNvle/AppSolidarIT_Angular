@@ -7,11 +7,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:Roboto, "Helvetica Neue", sans-serif;
+  
+
+  list-style-type:none;
 }
+body, html {
+  margin: auto;
+  height: auto;
+  padding: 0;
+
 }
-body { margin: auto;
-       height:auto;
-       padding:0;
-       background-color: #F4f5f7;
-     }
+body {
+  background: rgb(236,198,200);
+  background: -moz-linear-gradient(0deg, rgba(236,198,200,1) 0%, rgba(255,255,255,1) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(236,198,200,1) 0%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(0deg, rgba(236,198,200,1) 0%, rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ecc6c8",endColorstr="#ffffff",GradientType=1);
+}

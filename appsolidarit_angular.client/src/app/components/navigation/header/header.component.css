@@ -1,5 +1,7 @@
 mat-toolbar {
   background-color: #ffff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:bold;
 }
 
 
