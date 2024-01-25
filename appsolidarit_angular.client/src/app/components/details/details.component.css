@@ -1,0 +1,21 @@
+.products_title {
+  display: flex;
+  
+  margin-left: 20px;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 20px;
+}
+
+.container {
+    border: 1px solid lightblue;
+    display:flex;
+    flex-direction: column;
+    margin-left: 20px;
+
+}
+
+.description {
+  background-color: lightblue;
+  margin: auto;
+  text-align: left;
+}

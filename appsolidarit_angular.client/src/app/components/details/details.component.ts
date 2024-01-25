@@ -18,4 +18,6 @@ import { PRODUCTS } from '../../mock-products';
 })
 export default class DetailsComponent {
   products = PRODUCTS
+
+
 }

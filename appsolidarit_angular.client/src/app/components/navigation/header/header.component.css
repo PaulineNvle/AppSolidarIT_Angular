@@ -1,25 +1,41 @@
+
+/* barre de navigation */
+
 mat-toolbar {
   background-color: #ffff;
   font-family: 'Open Sans', sans-serif;
-  font-weight:bold;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
 }
 
-
-mat-side-nav-container {
-  height: calc(205vh - 115vh);
+.container {
+  display: flex;
+  margin: 0px 30px;
+  flex-direction: row;
+  gap: 20px;
 }
 
-.mat-sidenav {
-  width: 200px;
-  background-color: #ffff;
-  opacity: 0.6;
-  list-style-type: none;
-  cursor: pointer;
+.stuff {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
-mat-sidenav-content {
+.central {
+  gap: 40px;
 }
 
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 140%;
+  margin: auto;
+}
 
 
 button {
@@ -33,42 +49,35 @@ button {
 
   .logo:hover {
     cursor: pointer;
+    display: inline;
   }
 
-/* burger */
-.burger {
-  background: none;
-  border-style: none;
-  border-radius: 5px;
-  border-color: #c1002a;
-  color: #c1002a;
-  background-position: 100%;
-  background-size: 400%;
-  -webkit-transition: background 300ms ease-in-out;
-  transition: background 300ms ease-in-out;
+.rowOne {
+  display: flex;
+  justify-content: space-between;
 }
 
-  .burger:hover {
-    background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
-    background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
-    background-position: 0;
-  }
+.container:hover {
+  cursor: pointer;
+}
+
+
 
 
 
 /* button home - logout - profile */
 
 .little {
+  padding: 2px;
   background: none;
   border-style: none;
   border-radius: 5px;
   border-color: #c1002a;
   color: #c1002a;
-
   background-position: 100%;
   background-size: 400%;
-  -webkit-transition: background 300ms ease-in-out;
-  transition: background 300ms ease-in-out;
+  -webkit-transition: background 200ms ease-in-out;
+  transition: background 100ms ease-in-out;
 }
 
   .little:hover {
@@ -80,34 +89,111 @@ button {
 /* button products */
 
 .first {
-  border-radius: 10px;
-  border-color: #f2d9da;
-  color: #fff;
-  background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
-  background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+  padding: 4px;
+  background: #f2d9da;
+  border-style: none;
+  border-radius: 5px;
+  border-color: #c1002a;
+  color: #c1002a;
   background-position: 100%;
   background-size: 400%;
-  -webkit-transition: background 300ms ease-in-out;
-  transition: background 300ms ease-in-out;
+  -webkit-transition: background 200ms ease-in-out;
+  transition: background 100ms ease-in-out;
 }
 
   .first:hover {
+    background-image: -webkit-linear-gradient(45deg, #c1002a 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #c1002a 50%, transparent 50%);
     background-position: 0;
+    color: #f2d9da;
   }
 
-  /* button services */
+/* button details */
 .second {
-  border-radius: 10px;
+  padding: 4px;
+  background: #c1002a;
+  border-style: none;
+  border-radius: 5px;
   border-color: #c1002a;
   color: #f2d9da;
-  background-image: -webkit-linear-gradient(45deg, #c1002a 50%, transparent 50%);
-  background-image: linear-gradient(45deg, #c1002a 50%, transparent 50%);
   background-position: 100%;
   background-size: 400%;
-  -webkit-transition: background 300ms ease-in-out;
-  transition: background 300ms ease-in-out;
+  -webkit-transition: background 200ms ease-in-out;
+  transition: background 100ms ease-in-out;
 }
 
   .second:hover {
+    background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
     background-position: 0;
+    color: #c1002a;
+  }
+
+/* burger */
+.burger {
+  background-color: #ffff;
+  color: #c1002a;
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 200ms ease-in-out;
+  transition: background 100ms ease-in-out;
+}
+
+  .burger:hover {
+    background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-position: 0;
+  }
+
+/* dropdown*/
+
+li a:hover, .dropdown:hover {
+  background-color: #ffff;
+}
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+    border-radius: 6px;
+  }
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffff;
+  border-style: none;
+  border-radius: 5px;
+  background-position: 100%;
+  background-size: 400%;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-link {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  position: relative;
+}
+
+  .dropdown-link::after {
+    content: '';
+    height: 2px;
+    width: 75%;
+    background: #c1002a;
+    position: absolute;
+    left: 0px;
+    bottom: 6px;
+    opacity: 0;
+    transition: all 0.2s;
+    pointer-events: none;
+  }
+
+  .dropdown-link:hover::after {
+    opacity: 1;
   }

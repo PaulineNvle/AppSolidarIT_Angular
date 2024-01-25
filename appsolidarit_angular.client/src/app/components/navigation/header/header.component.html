@@ -1,51 +1,53 @@
 
 
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button class="burger" mat-mini-fab (click)="opened=!opened">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <img class="logo" src="../../../../assets/img/Logo_Solidaris_FR_2022_CMYK.svg" routerLink="" />
-    <div class="container">
-      <span class="stuff">
-        <button routerLink="" class="little">
-          <span class="material-symbols-outlined">home</span>
+<mat-toolbar>
+  <div class="container">
+    <ul>
+      <li class="dropdown">
+        <button class="burger" mat-mini-fab>
+          <mat-icon>menu</mat-icon>
         </button>
-        <button routerLink="" class="little">
-          <span class="material-symbols-outlined">exit_to_app</span>
-        </button>
-        <button routerLink="" class="little">
-          <span class="material-symbols-outlined">account_box</span>
-        </button>
-      </span>
+        <div class="dropdown-content">
+          <a class="dropdown-link" routerLink="">Page d'accueil</a>
+          <a class="dropdown-link" routerLink="/products">Nos produits</a>
+          <a class="dropdown-link" routerLink="/details">Nos services</a>
+        </div>
+      </li>
+    </ul>
+    <span>
+      <img class="logo" src="./../../../assets/img/Logo_Solidaris_FR_2022_CMYK.svg" routerLink="" />
+    </span>
+  </div>
+  <div class="container">
+    <ul class="stuff central">
+      <li routerLink="products" class="btn first">
+        Products
+      </li>
+      <li routerLink="details" class="btn second">
+        Details
+      </li>
+    </ul>
+  </div>
 
-      <span>
-        <button mat-raised-button color="antiquewhite" routerLink="/products" class="btn first">
-          Products
-        </button>
-        <button mat-raised-button color="antiquewhite" routerLink="details" class="btn second">
-          Details
-        </button>
-      </span>
-    </div>
-  </mat-toolbar-row>
+  <div class="container">
+    <ul class="stuff">
+      <li routerLink="" class="little">
+        <span class="material-symbols-outlined">home</span>
+      </li>
+      <li routerLink="" class="little">
+        <span class="material-symbols-outlined">exit_to_app</span>
+      </li>
+      <li routerLink="" class="little">
+        <span class="material-symbols-outlined">account_box</span>
+      </li>
+    </ul>
+  </div>
 </mat-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav [(opened)]="opened" mode="side">
-    <ul>
-      <li routerLink="">Page d'accueil</li>
-      <li routerLink="/products">Nos produits</li>
-      <li routerLink="/details">Nos services</li>
-    </ul>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <ul>
-      <li>faut</li>
-      <li>allonger</li>
-      <li>ici</li>
-    </ul>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+
+
+
+
+
 
 
 

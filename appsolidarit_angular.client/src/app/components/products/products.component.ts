@@ -21,6 +21,6 @@ export default class ProductsComponent{
 
 
   productDetail?: any;
-
+  title = 'Nos services';
   constructor(private route: ActivatedRoute) { }
 }

@@ -1,17 +1,23 @@
-<h2 class="products_title">Choissiez parmis nos différents services :</h2>
+<h2 class="products_title">Choisissez parmis nos différents services :</h2>
 
+<div class="backhome">
+  <button routerLink="" type="button" class="btn">Retour à la page précédente</button>
+</div>
 
-
-<div class="card">
-  <article *ngFor="let p of products" class="information">
-    <h2 class="label">{{p.Label}}</h2>
-    <span>{{p.DescriptionShort}}</span>
-    <button routerLink="/details" type="button" class="button">Cliquez ici pour plus de details</button>
-  </article>
+<div class="container" routerLink="/details" >
+  <div class="card" *ngFor="let p of products">
+    <div class="label">
+      <h2 class="label">{{p.Label}}</h2>
+    </div>
+    <div class="information">
+      <div>
+        <img class="image" src=" {{ p.Image }}" />
+      </div>
+      <div style="text-align:center; padding: 6px">
+        {{p.DescriptionShort}}
+      </div>
+    </div>
+  </div>
 </div>
 
 
-
-<div>
-  <button routerLink="" type="button" class="button">Retour à la page précédente</button>
-</div>

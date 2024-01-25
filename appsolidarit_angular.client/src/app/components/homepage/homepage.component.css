@@ -1,9 +1,12 @@
 
 .homepage_title {
+   margin-top: 40px;
   display: flex;
   justify-content: center;
   align-content: center;
   font-family: 'Open Sans', sans-serif;
+  font-size: 40px;
+
 }
 
 .container {
@@ -22,22 +25,23 @@
     height: 250px;
     width: 200px;
     border-radius: 12px;
-    border-top: 1px solid rgb(125, 125, 125);
-    border-left: 1px solid rgb(125, 125, 125);
+    border-top: 2px solid rgb(125, 125, 125);
+    border-left: 2px solid  rgb(125, 125, 125);
     padding: 10px;
-    background-color: rgb(244, 226, 230, 0.1);
+    background-color: #fff;
     backdrop-filter: blur(1px);
     filter: drop-shadow(0 30px 10px rgba(0,0,0,0.125));
   }
 
 
-  .container .card:hover {
-    cursor: pointer;
-    transform: scale(1.150);
-    border-color: rgba(255, 255, 255, 0.9);
-    filter: drop-shadow(0 10px 5px rgba(0,0,0,0.125));
-    transition: all .3s ease;
-  }
+    .container .card:hover {
+      cursor: pointer;
+      transform: scale(1.150);
+      border-top: 2px solid rgb(125, 125, 125);
+      border-left: 2px solid rgb(125, 125, 125);
+      filter: drop-shadow(0 10px 5px rgba(0,0,0,0.125));
+      transition: all .3s ease;
+    }
 
 
   .container .card .name {
