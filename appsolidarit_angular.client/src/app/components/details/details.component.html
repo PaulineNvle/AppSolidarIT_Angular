@@ -5,15 +5,14 @@
 </div>
 
 
-
-
-<div class="container" *ngFor="let p of products">
+<div class="container" *ngFor="let p of products"> <!--*ngIf="selectedProduct" --> 
   <div class="card">
     <div class="label">
-      <span class="description">Description du produit</span>
-      <p class="label">{{p.Label}}</p>
+      <span class="description"> Description du produit</span> <!-- {{selectedProduct.label | uppercase}} -->
+      <p class="label">{{p.Label}}</p> <!-- <label for="product-label"> </label>-->
     </div>
     <div class="information">
+      <!-- <input id="product-label" [(ngModel)]="selectedProduct.label" placeholder="label">--> <!-- voir si pas descriptopn a la place-->
       <div style="text-align:center; padding: 6px">
         {{p.DescriptionLong}}
       </div>

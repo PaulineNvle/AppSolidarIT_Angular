@@ -27,7 +27,7 @@ public partial class PortfolioDbfirstContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDb;\nDatabase=PortfolioDBFirst;Trusted_Connection=True;encrypt=false;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDb;Database=PortfolioDBFirst;Trusted_Connection=True;encrypt=false;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -35,14 +35,15 @@ public partial class PortfolioDbfirstContext : DbContext
         {
             entity.ToTable("Product");
 
-            entity.Property(e => e.Description)
-                .HasMaxLength(256)
+            entity.Property(e => e.DescriptionLong).IsUnicode(false);
+            entity.Property(e => e.DescriptionShort)
+                .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Label)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Theme)
-                .HasMaxLength(50)
+                .HasMaxLength(256)
                 .IsUnicode(false);
         });
 
@@ -75,6 +76,9 @@ public partial class PortfolioDbfirstContext : DbContext
             entity.ToTable("Theme");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.DescriptionShort)
+                .HasMaxLength(250)
+                .IsUnicode(false);
             entity.Property(e => e.Name).IsUnicode(false);
         });
 

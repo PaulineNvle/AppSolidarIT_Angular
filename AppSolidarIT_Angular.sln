@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSolidarIT_Angular.Server", "AppSolidarIT_Angular.Server\AppSolidarIT_Angular.Server.csproj", "{E1CC702A-6541-4589-AA5E-91E31B174000}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSolidarIT_Angular.Server", "AppSolidarIT_Angular.Server\AppSolidarIT_Angular.Server.csproj", "{E1CC702A-6541-4589-AA5E-91E31B174000}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "appsolidarit_angular.client", "appsolidarit_angular.client\appsolidarit_angular.client.esproj", "{F603C022-EC53-44D4-8963-241C7B1BF5EE}"
 EndProject

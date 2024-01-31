@@ -9,9 +9,11 @@ public partial class Product
 
     public string Label { get; set; } = null!;
 
-    public string? Description { get; set; }
-
     public string? Theme { get; set; }
+
+    public string? DescriptionShort { get; set; }
+
+    public string? DescriptionLong { get; set; }
 
     public virtual ICollection<Team> Teams { get; set; } = new List<Team>();
 }

@@ -25,3 +25,4 @@ export default class HomepageComponent {
   themes = THEMES;
   title = 'Page d\'accueil';
 }
+// ajouter un pop up quand on survole la card du theme, pour display un détail des themes 

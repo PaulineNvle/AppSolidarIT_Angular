@@ -20,6 +20,11 @@ export default class ProductsComponent{
   products = PRODUCTS
 
 
+  //selectedProduct?: Product;
+  //onSelect(hero: Product): void {
+  //  this.selectedProduct = product;
+  //}
+
   productDetail?: any;
   title = 'Nos services';
   constructor(private route: ActivatedRoute) { }

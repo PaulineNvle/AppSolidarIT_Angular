@@ -6,6 +6,8 @@ Connection string:
 Scaffold-DbContext "Server=(localdb)\MSSQLLocalDb;
 Database=PortfolioDBFirst;Trusted_Connection=True;encrypt=false;TrustServerCertificate=true" Microsoft.EntityFrameworkCore.SqlServer -o Entities
 
+dotnet ef dbcontext scaffold "Server=(localdb)\MSSQLLocalDb;Database=PortfolioDBFirst;Trusted_Connection=True;encrypt=false;TrustServerCertificate=true" Microsoft.EntityFrameworkCore.SqlServer -o Entities
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

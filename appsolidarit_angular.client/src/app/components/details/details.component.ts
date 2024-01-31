@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PRODUCTS } from '../../mock-products';
+
 
 
 
@@ -18,6 +19,8 @@ import { PRODUCTS } from '../../mock-products';
 })
 export default class DetailsComponent {
   products = PRODUCTS
+
+ 
 
 
 }
