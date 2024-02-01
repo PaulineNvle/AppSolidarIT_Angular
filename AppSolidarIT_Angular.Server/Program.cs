@@ -1,10 +1,24 @@
+using AppSolidarIT_Angular.Server.Entities;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddDbContext<PortfolioDbfirstContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("PortfolioContext")));
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -24,6 +38,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("AllowAll");
 
 app.MapFallbackToFile("/index.html");
 

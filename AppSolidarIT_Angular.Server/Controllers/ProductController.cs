@@ -1,7 +1,8 @@
 ﻿using AppSolidarIT_Angular.Server.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Reporting.Map.WebForms.BingMaps;
-using System.Net;
+using System.Data;
+
 
 namespace AppSolidarIT_Angular.Server.Controllers
 {
@@ -16,6 +17,10 @@ namespace AppSolidarIT_Angular.Server.Controllers
             _context = context;
         }
 
+
+       
+
+
         [HttpGet()]
         public IEnumerable<Product> GetAllProducts()
         {
@@ -27,7 +32,7 @@ namespace AppSolidarIT_Angular.Server.Controllers
 
         public ActionResult<Product> GetDetails(int Id)
         {
-           
+
 
             var product = _context.Products?.Find(Id);
             if (product == null)
@@ -36,39 +41,70 @@ namespace AppSolidarIT_Angular.Server.Controllers
             }
 
             return Ok(product);
-        
+
         }
 
+
         [HttpPost]
-        public void CreateProduct(Product product)
+        public ActionResult CreateProduct([Bind(include: "Label, Theme, DescriptionShort, DescriptionLong")] Product product)
         {
-            //try
-            //{
+            try
+            {
+                if (ModelState.IsValid)
+                {
 
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
-            _context.Products.Add(product);
-            _context.SaveChanges();
+                    _context.Products.Add(product);
+                    _context.SaveChanges();
+                    
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Impossible de créer le produit, verifier les conditions et essayez encore");
+            }
+            return Ok(product);
         }
 
         [HttpPut]
-        public void UpdateProduct(Product product)
+        public ActionResult UpdateProduct([Bind(include: "Label, Theme, DescriptionShort, DescriptionLong")] Product product)
         {
-
-            _context.Products.Remove(product);
-            _context.SaveChanges();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Products.Update(product);
+                    _context.SaveChanges();
+                    
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Impossible de mettre à jour le produit, verifier les conditions et essayez encore");
+            }
+            return Ok(product);
         }
 
         [HttpDelete]
 
-        public void DeleteProduct(Product product)
+        public ActionResult DeleteProduct(Product product)
         {
 
-            _context.Products.Remove(product);
-            _context.SaveChanges();
+
+            try
+            {
+                if (ModelState.IsValid)
+                    {
+                    _context.Products.Remove(product);
+                    _context.SaveChanges();
+                    //return RedirectToAction("Home");
+
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Impossible de supprimer le produit");
+            }
+            return Ok(product);
         }
 
 

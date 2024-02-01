@@ -1,4 +1,7 @@
 ﻿using AppSolidarIT_Angular.Server.Entities;
+using FirebirdSql.Data.Services;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace AppSolidarIT_Angular.Server.Services
 {
@@ -7,10 +10,18 @@ namespace AppSolidarIT_Angular.Server.Services
     {
         private readonly PortfolioDbfirstContext _context;
 
-        protected bool ValidateProduct(Product productToValidate)
+        public ProductService(PortfolioDbfirstContext context)
         {
-            if (productToValidate. == null) { }
+            _context = context;
         }
+
+
+        
+
+
 
     }
 }
+
+
+//mdp a ne pas afficher clair
