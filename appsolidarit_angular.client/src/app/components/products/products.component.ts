@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PRODUCTS } from '../../mock-products';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -20,12 +21,12 @@ export default class ProductsComponent{
   products = PRODUCTS
 
 
-  //selectedProduct?: Product;
-  //onSelect(hero: Product): void {
-  //  this.selectedProduct = product;
-  //}
 
   productDetail?: any;
   title = 'Nos services';
   constructor(private route: ActivatedRoute) { }
+
+
+  
+ 
 }
