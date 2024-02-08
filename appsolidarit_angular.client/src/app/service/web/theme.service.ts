@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ThemeService {
 
   constructor() { }
 
@@ -14,3 +14,4 @@ export class ProductService {
   public getALL(): Observable<any> {
     return this.httpClient.get('');
   }
+}

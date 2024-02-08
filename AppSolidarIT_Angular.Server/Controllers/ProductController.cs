@@ -161,10 +161,10 @@ namespace AppSolidarIT_Angular.Server.Controllers
            try
             {
                 if (ModelState.IsValid)
-                    {
+                {
                     _context.Products.Remove(product);
                     _context.SaveChanges();
-                   
+                }
             }
             catch (DataException)
             {

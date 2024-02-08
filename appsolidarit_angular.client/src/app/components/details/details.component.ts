@@ -1,23 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PRODUCTS } from '../../mock-products';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-  MatDialogTitle,
-  MatDialogContent,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogModule,
-} from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { CreateProductDialogComponent } from '../dialog/create-product-dialog/create-product-dialog.component';
+import { DetailsService } from '../../service/web/details.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 
 
@@ -30,26 +18,29 @@ import { CreateProductDialogComponent } from '../dialog/create-product-dialog/cr
   imports: [
     CommonModule,
     RouterModule,
-    //MatDialogModule,
-    //BrowserAnimationsModule,
-    //DetailsComponent,
-    //MatButtonModule,
+  ],
+  providers: [
+    DetailsService
   ]
-
 })
 
 
-export default class DetailsComponent {
-  products = PRODUCTS
 
-  title = "Details"
 
-  //constructor(private dialog: matdialog) {}
+export default class DetailsComponent implements OnInit {
 
-  // opendialog(): void{
-  //   const dialogref = this.dialog.open(createproductdialogcomponent)
+  private urlBase = "http://localhost:5033"
+  private httpClient = inject(HttpClient)
+  ngOnInit(): void {
+    this.httpClient.get(this.urlBase + "/api/Product").subscribe((data: any) => {
+      console.log(data)
+    })
+  }
 
-  // }
+ 
+  products = PRODUCTS;
+  title = "Details";
+
+  constructor(private route: ActivatedRoute) { }
 
 }
-

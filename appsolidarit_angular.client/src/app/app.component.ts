@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import HomepageComponent from './components/homepage/homepage.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { ProductService } from './service/web/theme.service';
+
 
 
 
@@ -30,5 +30,7 @@ import { ProductService } from './service/web/theme.service';
 })
 export class AppComponent {
   title = 'Portfolio SolidarIT';
+
+ 
 
 }
