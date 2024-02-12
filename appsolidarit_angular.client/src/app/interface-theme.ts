@@ -1,6 +1,6 @@
 export interface Theme {
-  Id: number;
-  Image: string;
-  Name: string;
-  DescriptionShort: string;
+  id?: number;
+  image?: string;
+  name: string;
+  descriptionShort?: string;
 }

@@ -63,11 +63,10 @@ namespace AppSolidarIT_Angular.Server.Controllers
 
 
 
-
         /// <summary>
         ///     Création d'un nouveau produit
         /// </summary>
- 
+
         // POST api/<ProductsController>
         [HttpPost]
         public ActionResult CreateProduct([Bind(include: "Label, Theme, DescriptionShort, DescriptionLong")] Product product)
@@ -77,7 +76,7 @@ namespace AppSolidarIT_Angular.Server.Controllers
                 if (ModelState.IsValid)
                 {
                     _context.Products.Add(product);
-                    _context.SaveChanges();                    
+                    _context.SaveChanges();
                 }
                 // autre option: 
 
@@ -102,7 +101,7 @@ namespace AppSolidarIT_Angular.Server.Controllers
         /// <summary>
         ///     Mise à jour d'un product
         /// </summary>
-      
+
         /// <returns>Rien</returns>
         // PUT api/<ProductsController>/5
         [HttpPut]
@@ -113,7 +112,8 @@ namespace AppSolidarIT_Angular.Server.Controllers
                 if (ModelState.IsValid)
                 {
                     _context.Products.Update(product);
-                    _context.SaveChanges();                                  }
+                    _context.SaveChanges();
+                }
             }
             catch (DataException)
             {
@@ -152,13 +152,13 @@ namespace AppSolidarIT_Angular.Server.Controllers
         /// <summary>
         ///     On supprime un product
         /// </summary>
-    
+
         /// <returns>Rien</returns>
         // DELETE api/<BirdsController>/5
         [HttpDelete]
         public ActionResult DeleteProduct(Product product)
         {
-           try
+            try
             {
                 if (ModelState.IsValid)
                 {

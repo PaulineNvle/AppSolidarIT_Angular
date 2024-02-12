@@ -1,17 +1,18 @@
 
 
-  <h2 class="homepage_title">Bienvenue chez SolidarIT !</h2>
+<h2 class="homepage_title">Bienvenue chez SolidarIT !</h2>
 
 
-  <div class="container">
-    <div class="card" *ngFor="let t of themes">
-      <div class="name">
-        <h2>{{t.Name}}</h2>
-      </div>
-      <div>
-        <button type="button" routerlink="details" class="button">
-          <img class="image" src=" {{ t.Image }}" />
-        </button>
-      </div>
+<div class="container">
+  <div class="card" *ngFor="let t of themes">
+    <div class="name">
+      <h2>{{t.name}}</h2>
+    </div>
+    <div>
+      <button type="button" routerlink="details" class="button">
+        <img class="image" src=" {{ t.image }}" />
+      </button>
     </div>
   </div>
+</div>
+<!--*ngIf="image" -->

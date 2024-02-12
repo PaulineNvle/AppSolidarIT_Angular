@@ -10,7 +10,4 @@
   <ItemGroup>
     <None Remove="src\app\products - Copy.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\app\components\AddEdit\" />
-  </ItemGroup>
 </Project>

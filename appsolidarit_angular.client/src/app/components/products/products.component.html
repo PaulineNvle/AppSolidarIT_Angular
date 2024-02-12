@@ -7,15 +7,15 @@
 <div class="container" routerLink="/details" >
   <div class="card" *ngFor="let p of products">
     <div class="label">
-      <h2 class="label">{{p.Label}}</h2>
+      <h2 class="label">{{p.label}}</h2>
     </div>
     <div class="information">
       <div>
-        <img class="image" src=" {{ p.Image }}" />
+        <img class="image" src=" {{ p.image }}" />
         <!--<button [class.selected]="product === selectedProduct" type="button" (click)="onSelect(product)">-->
       </div>
       <div style="text-align:center; padding: 6px">
-        {{p.DescriptionShort}}
+        {{p.descriptionShort}}
       </div>
     </div>
   </div>

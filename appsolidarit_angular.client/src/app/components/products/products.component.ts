@@ -17,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
     RouterModule
   ]
 })
-export default class ProductsComponent{
+export default class ProductsComponent {
   private urlBase = "http://localhost:5033"
   private httpClient = inject(HttpClient)
   ngOnInit(): void {
@@ -25,11 +25,9 @@ export default class ProductsComponent{
       console.log(data)
 
     })
-    ngSubmit
     
   }
   
-
 
 
   products = PRODUCTS

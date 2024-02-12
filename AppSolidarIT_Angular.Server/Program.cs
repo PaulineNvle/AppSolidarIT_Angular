@@ -14,11 +14,13 @@ builder.Services.AddCors(options =>
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddDbContext<PortfolioDbfirstContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("PortfolioContext")));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddDbContext<PortfolioDbfirstContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("PortfolioContext")));
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();

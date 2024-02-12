@@ -1,0 +1,40 @@
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="products_title">
+        Editer un produit
+        <a routerlink="" class="button">Retour</a>
+      </h2>
+    </div>
+    <div class="card-body" (ngSubmit)="saveAddProduct()">
+      <mat-form-field hintLabel="Max 10 characters">
+        <mat-label>Entrer le nom du produit</mat-label>
+        <input [(ngModel)]="label" name="label" type="text" matInput #input maxlength="10" placeholder="Ex.D360 ">
+        <mat-hint>{{input.value.length}}/10</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Choisissez la thématique</mat-label>
+        <mat-select>
+          *ngFor ="theme of themes"  [name]="theme.name" {
+          <mat-option [name]="theme.name">{{theme}}</mat-option>
+          }
+        </mat-select>
+        <mat-hint>Voici la flêche déroulante ^</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label [(ngModel)]l="descriptionShort">Décrivez de facon courte le produit</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label [(ngModel)]="descriptionLong">Décrivez complétement le produit</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <div>
+        <button type="submit" class="btn" (click)="saveUpdateProduct()">Enregistrer</button>
+        <button type="submit" class="btn" (click)="saveUpdateProduct()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+

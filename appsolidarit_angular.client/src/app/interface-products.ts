@@ -1,8 +1,8 @@
 export interface Product {
-  Id: number;
-  Image: string;
-  Label: string;
-  Theme: string;
-  DescriptionShort: string;
-  DescriptionLong: string;
+  id?: number;
+  image?: string;
+  label: string;
+  theme: string;
+  descriptionShort: string;
+  descriptionLong: string;
 }
