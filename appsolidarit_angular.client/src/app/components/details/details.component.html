@@ -8,13 +8,13 @@
 <div class="container" *ngFor="let p of products"> <!--*ngIf="selectedProduct" --> 
   <div class="card">
     <div class="label">
-      <span class="description"> Description du produit</span> <!-- {{selectedProduct.label | uppercase}} -->
-      <p class="label">{{p.Label}}</p> <!-- <label for="product-label"> </label>-->
+      <span class="description"> Description du produit</span> <!--{{selectedProduct.label | uppercase}}-->
+      <p class="label">{{p.label}}</p> <!-- <label for="product-label"> </label>-->
     </div>
     <div class="information">
       <!-- <input id="product-label" [(ngModel)]="selectedProduct.label" placeholder="label">--> <!-- voir si pas descriptopn a la place-->
       <div style="text-align:center; padding: 6px">
-        {{p.DescriptionLong}}
+        {{p.descriptionLong}}
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@
   <span>Texte explicatif</span>
   <div class="backhome">
 		<button  routerLink="/dialog/add" type="button" class="btn">Ajouter un nouveau produit</button>
-    <button routerLink="/dialog/edit" type="button">Editer un produit</button>
+    <button routerLink="/dialog/edit" type="button" class="btn">Editer un produit</button>
   </div>
  
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Theme } from '../../../interface-theme';
 import { Service } from '../../../service/web/service';
@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import DetailsComponent from '../../details/details.component';
 import ProductsComponent from '../../products/products.component';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from '../../navigation/loader/loader.component';
 
 @Component({
   standalone: true,
@@ -16,6 +17,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
   imports: [
+    LoaderComponent,
     CommonModule,
     ProductsComponent,
     DetailsComponent,
@@ -39,7 +41,12 @@ export class EditComponent  {
   descriptionShort!: string
   descriptionLong!: string
 
-  saveUpdateProduct() {
+  isLoading: boolean = false;
+  loadingTitle: string = 'Loading';
+  errors: any = [];
+
+  saveProduct() {
+
     var inputData = {
       theme: this.theme,
       label: this.label,
@@ -47,12 +54,21 @@ export class EditComponent  {
       descriptionLong: this.descriptionLong
     }
 
-    this.Service.saveUpdateProduct(inputData).subscribe({
+    this.Service.saveProduct(inputData).subscribe({
       next: (res: any) => {
-        console.log(res, 'reponse')
+        console.log(res, 'reponse');
+
+        alert(res.message); // permet de clear les data après le save
+        this.theme = '';
+        this.label = '';
+        this.descriptionShort = '';
+        this.descriptionLong = '';
+        this.isLoading = false;
       },
-      Error: (err: any) => {
-        console.log(err, 'erreur')
+      error: (err: any) => {
+        this.errors = err.error.errors;
+        this.isLoading = false;
+        console.log(err.error.errors, 'erreur')
       }
 
      

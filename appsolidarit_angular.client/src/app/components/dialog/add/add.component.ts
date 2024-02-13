@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import ProductsComponent from '../../products/products.component';
 import DetailsComponent from '../../details/details.component';
 import { Service } from '../../../service/web/service';
@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { Theme } from '../../../interface-theme';
+import { LoaderComponent } from '../../navigation/loader/loader.component';
 
 
 
@@ -18,10 +19,11 @@ import { Theme } from '../../../interface-theme';
   templateUrl: './add.component.html',
   styleUrl: './add.component.css',
   imports: [
+    LoaderComponent,
     CommonModule,
     ProductsComponent,
     DetailsComponent,
-    FormGroup,
+  
     MatFormFieldModule, MatInputModule, MatSelectModule,
     RouterModule,
     ReactiveFormsModule,
@@ -33,7 +35,7 @@ import { Theme } from '../../../interface-theme';
 })
 export class AddComponent {
  title = "Ajouter un produit";
-Service: any;
+ Service: any;
   constructor(private route: ActivatedRoute) { }
 
  
@@ -43,7 +45,14 @@ Service: any;
   descriptionShort!: string
   descriptionLong!: string
 
-  saveAddProduct() { // ou saveaddproduct onsubmit ?
+  isLoading: boolean = false;
+  loadingTitle: string = 'Loading';
+  errors: any = [];
+
+  saveProduct() { // ou saveaddproduct onsubmit ?
+
+    this.isLoading = true;
+    this.loadingTitle = 'Saving';
     var inputData = {
       theme: this.theme,
       label: this.label,
@@ -52,12 +61,22 @@ Service: any;
     }
 
 
-    this.Service.saveAddProduct(inputData).subscribe({
+    this.Service.saveProduct(inputData).subscribe({
       next: (res: any) => {
-        console.log(res, 'reponse')
+        console.log(res, 'reponse');
+
+       
+        alert(res.message); // permet de clear les data après le save
+        this.theme = '';
+        this.label = '';
+        this.descriptionShort = '';
+        this.descriptionLong = '';
+        this.isLoading = false;
       },
-      Error: (err: any) => {
-        console.log(err, 'erreur')
+      error: (err: any) => {
+        this.errors = err.error.errors;
+        this.isLoading = false;
+        console.log(err.error.errors, 'erreur')
       }
     });
 

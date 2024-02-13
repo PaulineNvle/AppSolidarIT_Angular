@@ -31,7 +31,7 @@ export const routes: Routes = [
     title: 'Ajouter un produit',
   },
   {
-    'path': '/dialog/edit',
+    'path': 'dialog/edit',
     component: EditComponent,
     title: 'Editer un produit',
   }
