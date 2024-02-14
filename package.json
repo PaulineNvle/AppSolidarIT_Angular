@@ -3,6 +3,7 @@
     "@angular/material": "^17.0.5",
     "angular-in-memory-web-api": "^0.17.0",
     "bootstrap": "^5.3.2",
+    "concurrently": "^8.2.2",
     "hamburgers": "^1.2.1"
   }
 }

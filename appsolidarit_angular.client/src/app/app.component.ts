@@ -24,7 +24,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     RouterLink,
     MatSidenavModule,
     FormsModule,
-    
     ReactiveFormsModule
   ],
   selector: 'app-root',

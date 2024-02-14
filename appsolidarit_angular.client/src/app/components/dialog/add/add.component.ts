@@ -23,7 +23,6 @@ import { LoaderComponent } from '../../navigation/loader/loader.component';
     CommonModule,
     ProductsComponent,
     DetailsComponent,
-  
     MatFormFieldModule, MatInputModule, MatSelectModule,
     RouterModule,
     ReactiveFormsModule,
@@ -34,66 +33,49 @@ import { LoaderComponent } from '../../navigation/loader/loader.component';
   ]
 })
 export class AddComponent {
- title = "Ajouter un produit";
- Service: any;
+  title = "Ajouter un produit";
+
   constructor(private route: ActivatedRoute) { }
 
- 
+  themes: Theme[] = [
+    { id: 1, name: 'Business Management', descriptionShort: 'Recettes & dépenses AC' },
+    { id: 2, name: 'Contact Management', descriptionShort: 'Gestion de dossiers et traçabilité' },
+    { id: 3, name: 'SolidarIT as a Services', descriptionShort: 'Proactivité calls to action' },
+    { id: 4, name: 'My Solidaris', descriptionShort: 'Guichet Solidaris mobile' },
+    { id: 5, name: 'Case Management', descriptionShort: 'Gestion de dossiers' }
+  ];
+
 
   theme!: string
   label!: string
   descriptionShort!: string
   descriptionLong!: string
-
   isLoading: boolean = false;
-  loadingTitle: string = 'Loading';
-  errors: any = [];
 
-  saveProduct() { // ou saveaddproduct onsubmit ?
+  Service: any;
+  createSuccess!: boolean;
 
-    this.isLoading = true;
-    this.loadingTitle = 'Saving';
-    var inputData = {
-      theme: this.theme,
-      label: this.label,
-      descriptionShort: this.descriptionShort,
-      descriptionLong: this.descriptionLong
-    }
+  onCreateProduct(formsControler: any) {
 
+    if (!formsControler.valid)
+      this.createSuccess = false
+    if (formsControler.valid) {
+      this.themes.forEach(t => {
+        if (t.id == formsControler.value.id)
+          formsControler.value.name = t.name
+      })
 
-    this.Service.saveProduct(inputData).subscribe({
-      next: (res: any) => {
-        console.log(res, 'reponse');
+      this.Service.createProduct(formsControler.value).subscribe(
+        (data: any) => {
+          this.createSuccess = true
+        },
+        Error, (err: any) => {
+          this.isLoading = false;
+          console.log(err, 'erreur')
 
-       
-        alert(res.message); // permet de clear les data après le save
-        this.theme = '';
-        this.label = '';
-        this.descriptionShort = '';
-        this.descriptionLong = '';
-        this.isLoading = false;
-      },
-      error: (err: any) => {
-        this.errors = err.error.errors;
-        this.isLoading = false;
-        console.log(err.error.errors, 'erreur')
       }
-    });
 
-    // subscribe aussi pour post/update/del
-
+      )
+    }
   }
-
-
-  themes: Theme[] = [
-    { name: 'Business Management', descriptionShort: 'Recettes & dépenses AC'},
-    { name: 'Contact Management', descriptionShort: 'Gestion de dossiers et traçabilité'},
-    { name: 'SolidarIT as a Services', descriptionShort: 'Proactivité calls to action'},
-    { name: 'My Solidaris', descriptionShort: 'Guichet Solidaris mobile'},
-    { name: 'Case Management', descriptionShort: 'Gestion de dossiers'}
-  ];
-
-
-
 }
-

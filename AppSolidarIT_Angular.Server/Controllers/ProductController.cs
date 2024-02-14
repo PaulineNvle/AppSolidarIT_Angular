@@ -61,14 +61,12 @@ namespace AppSolidarIT_Angular.Server.Controllers
         //    }
         //}
 
-
-
         /// <summary>
         ///     Création d'un nouveau produit
         /// </summary>
 
         // POST api/<ProductsController>
-        [HttpPost]
+        [HttpPut]
         public ActionResult CreateProduct([Bind(include: "Label, Theme, DescriptionShort, DescriptionLong")] Product product)
         {
             try

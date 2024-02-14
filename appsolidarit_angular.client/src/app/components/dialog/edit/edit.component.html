@@ -5,24 +5,28 @@
       <div class="card-header">
         <h2 class="products_title">
           Editer un produit
-          
+          <button routerlink="" type="button" class="btn">Retour</button>
         </h2>
         <div>
-          <button routerlink="" type="button" class="btn">Retour</button>
         </div>
       </div>
-      <div *ngIf="isLoading; else elseForm ">
-        <app-loader title="loadingTitle" />
+      <div *ngIf="updateSuccess">
+        <div class="alert alert-success">Produit édité avec succes</div>
       </div>
-      <ng-template #elseForm>
-        <div class="card-body" (ngSubmit)="saveProduct()">
+      <div *ngIf="updateSuccess==false">
+        <div class="alert alert-danger">Le produit n'a pas été édité, tous les champs ne sont pas complets</div>
+      </div>
+      <div *ngIf="isLoading; else elseForm ">
+        <app-loader />
+      </div>
+      <ng-template #elseForm (ngSubmit)="onUpdateProduct()">
+        <div class="card-body" >
           <mat-form-field hintLabel="Max 10 characters">
             <mat-label>Entrer le nom du produit</mat-label>
-            <input [(ngModel)]="label" name="label" type="text" matInput #input maxlength="10" placeholder="Ex.D360 ">
+            <input  name="label"  #label="ngModel" [(ngModel)]="product.label" type="text" matInput #input maxlength="10" placeholder="Ex.D360 ">
             <span *ngIf="errors.label" class="text-danger">{{errors.label}}</span>
-            <mat-hint>{{input.value.length}}/10</mat-hint>
+            <!--<mat-hint>{{input.value.length}}/10</mat-hint>-->
           </mat-form-field>
-         
           <h4>Choisissez une thématique</h4>
           <mat-form-field>
             <mat-label>Thématique</mat-label>
@@ -36,16 +40,16 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Décrivez de facon courte le produit</mat-label>
-            <textarea matInput [(ngModel)]="descriptionShort" name="descriptionShort"></textarea>
+            <textarea matInput  name="descriptionShort" #descriptionShort="ngModel"   [(ngModel)]="product.descriptionShort" ></textarea>
             <span *ngIf="errors.descriptionShort" class="text-danger">{{errors.descriptionShort}}</span>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Décrivez complétement le produit</mat-label>
-            <textarea matInput [(ngModel)]="descriptionLong" name="descriptionLong"></textarea>
+            <textarea matInput name="descriptionLong" #descriptionLong="ngModel"  [(ngModel)]="product.descriptionLong" ></textarea>
             <span *ngIf="errors.descriptionLong" class="text-danger">{{errors.descriptionLong}}</span>
           </mat-form-field>
           <div>
-            <button type="submit" class="btn" (click)="saveProduct()">Enregistrer</button>
+            <button type="submit" class="btn">Enregistrer</button>
             <button routerLink="" type="button" class="btn">Annuler</button>
           </div>
         </div>

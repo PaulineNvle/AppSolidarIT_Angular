@@ -10,6 +10,7 @@ import DetailsComponent from '../../details/details.component';
 import ProductsComponent from '../../products/products.component';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../../navigation/loader/loader.component';
+import { Product } from '../../../interface-products';
 
 @Component({
   standalone: true,
@@ -30,10 +31,11 @@ import { LoaderComponent } from '../../navigation/loader/loader.component';
     Service,
   ]
 })
-export class EditComponent  {
+export class EditComponent {
   title = "Modifier un produit";
   Service: any;
-   
+
+
   constructor(private route: ActivatedRoute) { }
 
   theme!: string
@@ -41,58 +43,56 @@ export class EditComponent  {
   descriptionShort!: string
   descriptionLong!: string
 
+  themes: Theme[] = [
+    { id: 1, name: 'Business Management', descriptionShort: 'Recettes & dépenses AC' },
+    { id: 2, name: 'Contact Management', descriptionShort: 'Gestion de dossiers et traçabilité' },
+    { id: 3, name: 'SolidarIT as a Services', descriptionShort: 'Proactivité calls to action' },
+    { id: 4, name: 'My Solidaris', descriptionShort: 'Guichet Solidaris mobile' },
+    { id: 5, name: 'Case Management', descriptionShort: 'Gestion de dossiers' }
+  ];
+
   isLoading: boolean = false;
   loadingTitle: string = 'Loading';
-  errors: any = [];
-
-  saveProduct() {
-
-    var inputData = {
-      theme: this.theme,
-      label: this.label,
-      descriptionShort: this.descriptionShort,
-      descriptionLong: this.descriptionLong
-    }
-
-    this.Service.saveProduct(inputData).subscribe({
-      next: (res: any) => {
-        console.log(res, 'reponse');
-
-        alert(res.message); // permet de clear les data après le save
-        this.theme = '';
-        this.label = '';
-        this.descriptionShort = '';
-        this.descriptionLong = '';
-        this.isLoading = false;
-      },
-      error: (err: any) => {
-        this.errors = err.error.errors;
-        this.isLoading = false;
-        console.log(err.error.errors, 'erreur')
-      }
-
-     
-    });
-
- // subscribe aussi pour post/update/del
+  id: any;
+  updateSuccess!: boolean;
+  product!: Product
 
 
+  ngOnInit(): void {
+    this.id = this.route.snapshot.params["id"]
+    this.get()
   }
 
-  //ngOnChanges() {
+  get() {
+    this.Service.getProduct(this.id).subscribe(
+      (data: Product) => {
+        this.product = data
+      }
+    )
+  }
+
+  onUpdateProduct(product: any) {
 
 
-  //}
+    if (!product.valid)
+      this.updateSuccess = false
+    if (product.valid) {
+      this.themes.forEach(t => {
+        if (t.id == product.value.themeId)
+          product.value.name = t.name
+        console.log(product.value.name)
+      })
+      this.Service.updateProduct(product.value).subscribe(
+        (data: any) => {
+          this.updateSuccess = true
+        },
+        Error, (err: any) => {
+          this.isLoading = false;
+          console.log(err, 'erreur')
+        }
 
-  themes: Theme[] = [
-    { name: 'Business Management', descriptionShort: 'Recettes & dépenses AC' },
-    { name: 'Contact Management', descriptionShort: 'Gestion de dossiers et traçabilité' },
-    { name: 'SolidarIT as a Services', descriptionShort: 'Proactivité calls to action' },
-    { name: 'My Solidaris', descriptionShort: 'Guichet Solidaris mobile' },
-    { name: 'Case Management', descriptionShort: 'Gestion de dossiers' }
-  ];
-  
-
- 
+      )
+    }
+  }
 }
 

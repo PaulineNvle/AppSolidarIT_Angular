@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PRODUCTS } from '../../mock-products';
 import { HttpClient } from '@angular/common/http';
@@ -17,25 +17,26 @@ import { HttpClient } from '@angular/common/http';
     RouterModule
   ]
 })
-export default class ProductsComponent {
-  private urlBase = "http://localhost:5033"
-  private httpClient = inject(HttpClient)
-  ngOnInit(): void {
-    this.httpClient.get(this.urlBase + "/api/Product").subscribe((data: any) => {
-      console.log(data)
-
-    })
-    
-  }
-  
-
+export default class ProductsComponent implements OnInit{
 
   products = PRODUCTS
   productDetail?: any;
   title = 'Nos services';
+
   constructor(private route: ActivatedRoute) { }
-
-
   
- 
+  private urlBase = "http://localhost:5033"
+  private httpClient = inject(HttpClient)
+
+  ngOnInit(): void {
+    this.httpClient.get(this.urlBase + "/api/Product")
+      .subscribe((data: any) => {
+          console.log(data)
+
+      });
+
+    //ngOnDestroy(): void {
+    //  this.httpClient.unsubscribe();
+    //}
+  }
 }
