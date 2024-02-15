@@ -1,0 +1,45 @@
+
+<div>
+  <h2>Ajouter un produit</h2>
+  <button routerLink="" type="button" class="btn">Retour</button>
+</div>
+<div *ngIf="createSuccess">
+  <div class="alert alert-success">Produit enregistré avec succés!</div>
+</div>
+<div *ngIf="createSuccess==false">
+  <div class="alert alert-danger">Produit non enregistré, certains champs sont manquants! </div>
+</div>
+<div *ngIf="isLoading; else elseForm ">
+  <app-loader/>
+ </div>
+<form #elseForm [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="id">ID</label>
+    <input id="id" type="text" formControlName="id" readonly />
+  </div>
+  <div>
+    <label for="label">Sélectionnez une thématique de produit</label>
+    <select id="label" formControlName="label">
+      <option value="Business Management">Business Management</option>
+      <option value="Contact Management">Contact Management</option>
+      <option value="SolidarIT as a Service">SolidarIT as a Services</option>
+      <option value="My Solidaris">My Solidaris</option>
+      <option value="Case Management">Case Management</option>
+    </select>
+    <div *ngIf="productForm.controls['label'].errors && (productForm.controls['label'].dirty ||productForm.controls['label'].touched)">
+      La thématique est requise
+    </div>
+  </div>
+  <div>
+    <label for="descriptionShort">Décrivez de facon courte le produit</label>
+    <input id="descriptionShort" type="text" formControlName="descriptionShort"/>
+  </div>
+  <div>
+    <label for="descriptionLong">Décrivez de facon complète</label>
+    <input id="descriptionLong" type="text" formControlName="descriptionLong"/>
+  </div>
+  <div class="form-buttons-container">
+    <button type="submit" id="add-product">Ajouter</button>
+    <button routerLink="/products" class="goBack">Annuler</button>
+  </div>
+</form>

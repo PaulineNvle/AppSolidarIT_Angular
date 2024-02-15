@@ -1,10 +1,10 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import ProductsComponent from './components/products/products.component';
-import DetailsComponent from './components/details/details.component';
-import HomepageComponent from './components/homepage/homepage.component';
-import { AddComponent } from './components/dialog/add/add.component';
-import { EditComponent } from './components/dialog/edit/edit.component';
+import DetailsComponent from './components/products/details-product/details-product.component';
+import HomepageComponent from './components/products/homepage/homepage.component';
+import { AddComponent } from './components/dialog/add/add-product.component';
+import { EditComponent } from './components/dialog/edit/edit-product.component';
 
 
 

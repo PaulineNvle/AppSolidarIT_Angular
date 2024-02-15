@@ -1,11 +1,10 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { THEMES } from '../../mock-theme';
 import { MatCardModule } from "@angular/material/card";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
-import { Service } from '../../service/web/service';
+import { productService} from '../service/productService';
+import { mockThemes } from './mock-theme';
 
 
 
@@ -23,7 +22,7 @@ import { Service } from '../../service/web/service';
     HttpClientModule
   ],
   providers: [
-    Service
+    productService
   ]
 })
 export default class HomepageComponent implements OnInit{
@@ -41,7 +40,7 @@ constructor(private route: ActivatedRoute) { }
   }
 
 
-  themes = THEMES;
+  themes = mockThemes;
   title = 'Page d\'accueil';
   
 

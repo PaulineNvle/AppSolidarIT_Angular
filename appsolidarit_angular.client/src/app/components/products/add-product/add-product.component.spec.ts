@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AddComponent } from './add-product.component';
 
-import { AddComponent } from './add.component';
+
 
 describe('UpdateProductDialogComponent', () => {
   let component: AddComponent;

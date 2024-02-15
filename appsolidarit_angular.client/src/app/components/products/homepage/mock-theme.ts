@@ -1,9 +1,9 @@
-import { Theme } from './interface-theme';
+import { ITheme } from './ITheme';
 
 
 
 
-export const THEMES: Theme[] = [
+export const mockThemes: ITheme[] = [
   {
     id: 1,
     image: '/assets/img/BusinessManagement_Icon.png',

@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from '../../interface-products';
+import { IProduct } from '../../products/product-list/IProducts';
 
 @Injectable({
   providedIn: 'root'
 })
-export class Service {
+export class productService {
 
   constructor() { }
   private urlBase = "http://localhost:5033"
@@ -16,13 +16,17 @@ export class Service {
 
   httpClient = inject(HttpClient)
 
+
+// observable permet de faire des ope de facon asynchrone, veut dire
+
+
   //GET
-  get(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(`${this.urlBase}/products`);
+  get(): Observable<IProduct[]> { 
+    return this.httpClient.get<IProduct[]>(`${this.urlBase}/products`);
   }
 
   getByid(id: string) {
-    return this.httpClient.get<Product[]>(`${this.urlBase}/products`);
+    return this.httpClient.get<IProduct[]>(`${this.urlBase}/products`);
   }
 
   //CREATE
@@ -32,7 +36,7 @@ export class Service {
 
   //UPDATE
   update(updateObj: any): Observable<any> {
-    return this.httpClient.put<Product[]>(`${this.urlBase}/products/${updateObj.id}`, updateObj);
+    return this.httpClient.put<IProduct[]>(`${this.urlBase}/products/${updateObj.id}`, updateObj);
   }
 
   // DELETE 

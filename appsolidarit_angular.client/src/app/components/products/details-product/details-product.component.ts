@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { PRODUCTS } from '../../mock-products';
+import { mockProducts } from '../../products/product-list/mock-products';
+import { productService } from '../service/productService';
 import { HttpClient } from '@angular/common/http';
-import { Service } from '../../service/web/service';
 
 
 
@@ -19,7 +19,7 @@ import { Service } from '../../service/web/service';
     RouterModule,
   ],
   providers: [
-    Service
+    productService
   ]
 })
 
@@ -27,7 +27,7 @@ import { Service } from '../../service/web/service';
 export default class DetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
-  products = PRODUCTS;
+  products = mockProducts;
   title = "Details";
 
   private urlBase = "http://localhost:5033"
@@ -38,6 +38,5 @@ export default class DetailsComponent implements OnInit {
       console.log(data)
     })
   }
-
 
 }

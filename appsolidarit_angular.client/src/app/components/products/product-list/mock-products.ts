@@ -1,15 +1,15 @@
-import { Product } from './interface-products'; 
+import { IProduct } from './IProducts'; 
 
 
 
-export const PRODUCTS: Product[] = [
+export const mockProducts: IProduct[] = [
   {
     id: 1,
     image: '/assets/img/iCRM_Icon.png',
     label: 'D360',
     theme: 'Contact Management',
     descriptionShort: 'Gestion de dossiers et traçabilité',
-    descriptionLong: 'Son but : Recherche phonétique par numéro de téléphone, par NISS, … ; centralisation de toutes les infos relatives à un dossier (profil affilié; composition de ménage et tiers, soins reçus, demande en cours, remboursements perçus, …) ; gestion des données de contact; vérification éligibilité (cotisations); gestion des demandes de séjour à l’étranger et commande de documents; suivi des courriers entrants et sortants; consultation des données en provenance de tous les secteurs AO; accès à toutes les applications tierces.'
+    descriptionLong: 'Son but : Recherche phonétique par numéro de téléphone,par NISS, … ; centralisation de toutes les infos relatives à un dossier (profil affilié; composition de ménage et tiers, soins reçus, demande en cours, remboursements perçus, …) ; gestion des données de contact; vérification éligibilité (cotisations); gestion des demandes de séjour à l’étranger et commande de documents; suivi des courriers entrants et sortants; consultation des données en provenance de tous les secteurs AO; accès à toutes les applications tierces.'
   },
   {
     id: 2,
