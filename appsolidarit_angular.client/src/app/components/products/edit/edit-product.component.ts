@@ -1,21 +1,18 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import ProductsComponent from '../product-list/products.component';
 import DetailsComponent from '../details-product/details-product.component';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../../../core/navigation/loader/loader.component';
 import { IProduct } from '../../products/product-list/IProducts';
 import { productService } from '../service/productService';
-import { ITheme } from '../homepage/ITheme';
-
-
 
 @Component({
   standalone: true,
   selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css',
+  templateUrl: './edit-product.component.html',
+  styleUrl: './edit-product.component.css',
   imports: [
     LoaderComponent,
     CommonModule,
@@ -30,64 +27,74 @@ import { ITheme } from '../homepage/ITheme';
   ]
 })
 export class EditComponent {
+  editProductForm: FormGroup;
   title = "Modifier un produit";
-  Service: any;
-
-
-  constructor(private route: ActivatedRoute) { }
-
-  theme!: string;
-  label!: string;
-  descriptionShort!: string;
-  descriptionLong!: string;
   isLoading: boolean = false;
-  loadingTitle: string = 'Loading';
-  id: any;
-  updateSuccess!: boolean; // boolean pour le fi 
-  product!: IProduct;
+  product: IProduct | undefined;
 
-  themes: ITheme[] = [
-    { id: 1, name: 'Business Management', descriptionShort: 'Recettes & dépenses AC' },
-    { id: 2, name: 'Contact Management', descriptionShort: 'Gestion de dossiers et traçabilité' },
-    { id: 3, name: 'SolidarIT as a Services', descriptionShort: 'Proactivité calls to action' },
-    { id: 4, name: 'My Solidaris', descriptionShort: 'Guichet Solidaris mobile' },
-    { id: 5, name: 'Case Management', descriptionShort: 'Gestion de dossiers' }
-  ];
+ 
 
+  constructor(private productService: productService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router)
+  {
+    this.editProductForm = this.fb.nonNullable.group({
+      id: [''],
+      label: [''],
+      descriptionShort: [''],
+      descriptionLong: ['']
 
+    })
+  }
+
+ 
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params["id"];
-    this.get();
+    this.getProduct();
   }
 
-  get() {
-    this.Service.getProduct(this.id).subscribe(
-      (data: IProduct) => {
-        this.product = data;
-      }
-    );
-  }
-
-  onUpdateProduct(product: any) {
-    if (!product.valid)
-      this.updateSuccess = false; // verifie si le product est valide, si pas, c'est false a update success
-    if (product.valid) { // si il est valide,
-      this.themes.forEach(t => {
-        if (t.id == product.value.themeId) //Si un thème correspondant est trouvé, 
-          product.value.name = t.name; // elle met à jour le nom du thème dans l'objet produit avec product.value.name = t.name.
-        console.log(product.value.name);
-      });
-      this.Service.updateProduct(product.value).subscribe(
-        (data: any) => {
-          this.updateSuccess = true; // si màj réussie: update success a true
-        },
-        (error: any) => {
-          this.isLoading = false;
-          console.log(error);
-        }
-
-      );
+  getProduct(): void {
+    const id = (this.route.snapshot.paramMap.get('id'));
+    console.log("id is: " + id);
+    if (!id) {
+      console.log("No ID provided");
+      return;
     }
+    this.productService.getProductByid(id).subscribe((product) => {
+      console.log(product)
+      if (!product) {
+        console.log("no product");
+        return;
+      };
+      this.product = product,
+        console.log(product.label),
+        console.log(this.product);
+      this.editProductForm.patchValue(product);
+      console.log(this.editProductForm.value);
+    });
+    console.log(this.product);
+  }
+
+ 
+  onSave() {
+    if (this.editProductForm.valid)
+      this.productService.editProduct(this.editProductForm.value).subscribe({
+        next: () => this.router.navigate(['/products']),
+      });
+
+  }
+
+  onDelete() {
+    if (!this.product) {
+      console.log("Pas de produit selectionné");
+      return;
+    }
+    console.log(this.product.id);
+    this.productService.deleteProductById(this.product.id)
+      .subscribe({
+        next: () => this.router.navigate(['/products']),
+        error: (err) => console.error('Erreur de supression du produit: ', err)
+    })
   }
 }

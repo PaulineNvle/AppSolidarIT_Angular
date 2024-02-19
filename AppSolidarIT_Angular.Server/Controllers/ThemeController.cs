@@ -1,5 +1,4 @@
 ﻿using AppSolidarIT_Angular.Server.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 
@@ -34,14 +33,14 @@ namespace AppSolidarIT_Angular.Server.Controllers
             var theme = _context.Themes?.Find(Id);
             if (theme == null)
             {
-                return NotFound();
+                return NotFound("Aie aie aie, non trouvé!");
             }
             return Ok(theme);
 
         }
 
-        [HttpPost]
-        public ActionResult CreateTheme([Bind(include: "Name, DesccriptionShort")] Theme theme)
+        [HttpPost()]
+        public ActionResult CreateTheme( Theme theme)
         {
             try
             {
@@ -55,19 +54,19 @@ namespace AppSolidarIT_Angular.Server.Controllers
             }
             catch (DataException)
             {
-                ModelState.AddModelError("", "Impossible de créer le produit, verifier les conditions et essayez encore");
+                ModelState.AddModelError("", "Impossible de créer le theme , verifier les conditions et essayez encore");
             }
             return Ok(theme);
         }
 
-        [HttpPut]
-        public ActionResult UpdateProduct([Bind(include: "Name, DesccriptionShort")] Theme theme)
+        [HttpPut("{id}")]
+        public ActionResult UpdateProduct( Theme theme)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Themes.Remove(theme);
+                    _context.Themes.Update(theme);
                     _context.SaveChanges();
                 }
             }
@@ -81,7 +80,7 @@ namespace AppSolidarIT_Angular.Server.Controllers
         }
 
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
         public ActionResult DeleteProduct(Theme theme)
         {
@@ -103,10 +102,4 @@ namespace AppSolidarIT_Angular.Server.Controllers
 
         }
     }
-
-
-
-
-
-
 }

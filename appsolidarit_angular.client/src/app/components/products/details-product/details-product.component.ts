@@ -12,8 +12,8 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   standalone: true,
   selector: 'app-homepage',
-  templateUrl: './details.component.html',
-  styleUrl: './details.component.css',
+  templateUrl: './details-product.component.html',
+  styleUrl: './details-product.component.css',
   imports: [
     CommonModule,
     RouterModule,

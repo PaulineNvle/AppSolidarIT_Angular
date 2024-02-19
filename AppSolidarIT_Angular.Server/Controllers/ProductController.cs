@@ -17,24 +17,23 @@ namespace AppSolidarIT_Angular.Server.Controllers
             _context = context;
         }
 
-
-        /// <summary>
-        ///     Récupère tout les products
-        /// </summary>
-        /// <returns>Et bien des products, non ?</returns>
+        // <summary>
+        //     Récupère tout les products
+        // </summary>
+        // <returns>Et bien des products, non ?</returns>
         // GET: api/<ProductsController>
-        [HttpGet]
+        [HttpGet()]
         public IEnumerable<Product> GetAllProducts()
         {
             return _context.Products;
         }
 
-        /// <summary>
-        ///     Récupère un product à partir de son identifiant
-        /// </summary>
-        /// <returns></returns>
+        // <summary>
+        //     Récupère un product à partir de son identifiant
+        // </summary>
+        // <returns></returns>
         // GET api/<ProductsController>/5
-        [HttpGet("{Id}")]
+        [HttpGet("{id}")]
         public ActionResult<Product> GetDetails(int Id)
         {
             var product = _context.Products?.Find(Id);
@@ -45,29 +44,15 @@ namespace AppSolidarIT_Angular.Server.Controllers
             return Ok(product);
         }
 
-        // un try catch aurait ausis fonctionné
+       
 
-        //[HttpGet("{id}")]
-        //public ActionResult<Product> Get(int id)
-        //{
-        //    try
-        //    {
-        //        var product = _context.GetById(id);
-        //        return Ok(product);
-        //    }
-        //    catch (NotFoundException e)
-        //    {
-        //        return NotFound(e.Message);
-        //    }
-        //}
-
-        /// <summary>
-        ///     Création d'un nouveau produit
-        /// </summary>
+        // <summary>
+        //     Création d'un nouveau produit
+        // </summary>
 
         // POST api/<ProductsController>
-        [HttpPut]
-        public ActionResult CreateProduct([Bind(include: "Label, Theme, DescriptionShort, DescriptionLong")] Product product)
+        [HttpPost()]
+        public ActionResult CreateProduct( Product product)
         {
             try
             {
@@ -75,35 +60,29 @@ namespace AppSolidarIT_Angular.Server.Controllers
                 {
                     _context.Products.Add(product);
                     _context.SaveChanges();
+                    
+                } else{
+            // Handle the case where _context is null
+                    ModelState.AddModelError("", "Context is null or ModelState is not valid");
                 }
-                // autre option: 
-
-                /// <param name="product"></param>
-                /// <returns>Le product avec sont id (dans le Header trouveré son url d'accès)</returns>
-
-
-                //try
-                //{
-                //    var result = _context.Create(product);
-                //    return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
-                //}
+                
 
             }
-            catch (DataException e)
+            catch (DataException)
             {
-                return BadRequest(e.Message);
+                ModelState.AddModelError("", "Impossible de créer le produit , verifier les conditions et essayez encore");
             }
             return Ok(product);
         }
 
-        /// <summary>
-        ///     Mise à jour d'un product
-        /// </summary>
+        // <summary>
+        //     Mise à jour d'un product
+        // </summary>
 
-        /// <returns>Rien</returns>
+        // <returns>Rien</returns>
         // PUT api/<ProductsController>/5
-        [HttpPut]
-        public ActionResult PutProduct([Bind(include: "Label, Theme, DescriptionShort, DescriptionLong")] Product product)
+        [HttpPut("{id}")]
+        public ActionResult PutProduct(Product product)
         {
             try
             {
@@ -118,42 +97,18 @@ namespace AppSolidarIT_Angular.Server.Controllers
                 ModelState.AddModelError("", "Impossible de mettre à jour le produit, verifier les conditions et essayez encore");
             }
             return Ok(product);
-
-
-
-            // ou bien
-
-
-            //if (id != product.id)
-            //    return badrequest();
-
-            //try
-            //{
-            //    _context.update(bird);
-            //}
-            //catch (duplicateexception e)
-            //{
-            //    return badrequest(e.message);
-            //}
-            //catch (notfoundexception e)
-            //{
-            //    return notfound(e.message);
-            //}
-
-            //return nocontent();
-
         }
 
 
 
 
-        /// <summary>
-        ///     On supprime un product
-        /// </summary>
+        // <summary>
+        //     On supprime un product
+        // </summary>
 
-        /// <returns>Rien</returns>
+        // <returns>Rien</returns>
         // DELETE api/<BirdsController>/5
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult DeleteProduct(Product product)
         {
             try

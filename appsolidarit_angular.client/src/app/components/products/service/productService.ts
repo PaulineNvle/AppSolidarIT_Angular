@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { IProduct } from '../../products/product-list/IProducts';
 
 @Injectable({
@@ -8,42 +8,60 @@ import { IProduct } from '../../products/product-list/IProducts';
 })
 export class productService {
 
-  constructor() { }
-  private urlBase = "http://localhost:5033"
+  private urlBase = "http://localhost:5033/products/products"
+  constructor(private http: HttpClient)
+  { }
 
-
- /* product: Product = new Product();*/
-
-  httpClient = inject(HttpClient)
-
-
-// observable permet de faire des ope de facon asynchrone, veut dire
+// observable permet de faire des ope de facon asynchrone
 
 
   //GET
-  get(): Observable<IProduct[]> { 
-    return this.httpClient.get<IProduct[]>(`${this.urlBase}/products`);
+  getProduct(): Observable<IProduct[]> {
+    return this.http
+      .get<IProduct[]>(this.urlBase)
+      .pipe(map(response => response as IProduct[]));
   }
 
-  getByid(id: string) {
-    return this.httpClient.get<IProduct[]>(`${this.urlBase}/products`);
+  //GET BY ID
+  getProductByid(id: string):Observable<IProduct> {
+    return this.http
+      .get<IProduct>(`${this.urlBase}/${id}`);
   }
 
   //CREATE
-  create(newObj: any): Observable<any> {
-    return this.httpClient.post(`${this.urlBase}/products`, newObj);
+  addProduct(product :IProduct): Observable<any> {
+    return this.http
+      .post(this.urlBase, (product));
   }
 
   //UPDATE
-  update(updateObj: any): Observable<any> {
-    return this.httpClient.put<IProduct[]>(`${this.urlBase}/products/${updateObj.id}`, updateObj);
+  editProduct(product: IProduct): Observable<any> {
+    return this.http
+      .put<IProduct[]>(`${this.urlBase}/${product.id}`, product);
   }
 
-  // DELETE 
-  delete(): Observable<any> {
-    return this.httpClient.delete(`${this.urlBase}/products/`);
+  //DELETE
+  deleteProduct(product: IProduct): Observable<IProduct> {
+    if (confirm("Etes-vous sure de vouloir supprimer ce produit?")) {
+      //const index = mockContacts.findIndex(c => c.id === contact.id);
+      //mockContacts.splice(index,1) 
+      this.http
+        .delete<IProduct>(`${this.urlBase}/${product.id}`)
+    }
+    return of(product);
+  }
+
+  //DELETE BY ID
+  deleteProductById(id: number): Observable<IProduct> {
+    if (confirm("Are you sure you want to delete this contact?")) {
+
+      console.log(`${this.urlBase}/${id}`)
+      return this.http
+        .delete<IProduct>(`${this.urlBase}/${id}`)
+
+    } else {
+      return this.http.get<IProduct>(`${this.urlBase}/${id}`);
+      console.log('error ');
+    }
   }
 }
-
-// pas de htppclient, pas bonne pratique
-

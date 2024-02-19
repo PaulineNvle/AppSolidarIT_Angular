@@ -14,17 +14,17 @@ import { Router } from '@angular/router';
 @Component({
   standalone: true,
   selector: 'app-add',
-  templateUrl: './addproduct.component.html',
-  styleUrl: './add.component.css',
+  templateUrl: './add-product.component.html',
+  styleUrl: './add-product.component.css',
   imports: [
     LoaderComponent,
     CommonModule,
-    ProductsComponent, DetailsComponent,
+    ProductsComponent,
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
     RouterLink,
-    Router
+    DetailsComponent
   ],
   providers: [
     productService
@@ -53,7 +53,7 @@ export class AddComponent {
     const newProduct: IProduct = this.productForm.value;
 
     if (this.productForm.valid) {
-      this.productService.create(newProduct).subscribe({
+      this.productService.addProduct(newProduct).subscribe({
         next: () => this.router.navigate(['/products']),
         error: (error: HttpErrorResponse) => {
           console.log(error);

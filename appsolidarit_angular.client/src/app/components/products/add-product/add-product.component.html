@@ -3,23 +3,23 @@
   <h2>Ajouter un produit</h2>
   <button routerLink="" type="button" class="btn">Retour</button>
 </div>
-<div *ngIf="createSuccess">
+<!--<div *ngIf="onSubmit">
   <div class="alert alert-success">Produit enregistré avec succés!</div>
 </div>
-<div *ngIf="createSuccess==false">
+<div *ngIf="onSubmit==false">
   <div class="alert alert-danger">Produit non enregistré, certains champs sont manquants! </div>
-</div>
-<div *ngIf="isLoading; else elseForm ">
+</div>-->
+<!--<div *ngIf="isLoading; else elseForm ">
   <app-loader/>
- </div>
-<form #elseForm [formGroup]="productForm" (ngSubmit)="onSubmit()">
+ </div>-->
+<form <!--#elseForm--> [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div>
-    <label for="id">ID</label>
-    <input id="id" type="text" formControlName="id" readonly />
+    <label for="product-id">ID: </label>
+    <input id="product-id" type="text" formControlName="id" readonly />
   </div>
   <div>
-    <label for="label">Sélectionnez une thématique de produit</label>
-    <select id="label" formControlName="label">
+    <label for="product-label">Sélectionnez une thématique de produit</label>
+    <select id="product-label" formControlName="label">
       <option value="Business Management">Business Management</option>
       <option value="Contact Management">Contact Management</option>
       <option value="SolidarIT as a Service">SolidarIT as a Services</option>
@@ -31,12 +31,12 @@
     </div>
   </div>
   <div>
-    <label for="descriptionShort">Décrivez de facon courte le produit</label>
-    <input id="descriptionShort" type="text" formControlName="descriptionShort"/>
+    <label for="product-descriptionShort">Décrivez de facon courte le produit</label>
+    <input id="product-descriptionShort" type="text" formControlName="descriptionShort"/>
   </div>
   <div>
-    <label for="descriptionLong">Décrivez de facon complète</label>
-    <input id="descriptionLong" type="text" formControlName="descriptionLong"/>
+    <label for="product-descriptionLong">Décrivez de facon complète</label>
+    <input id="product-descriptionLong" type="text" formControlName="descriptionLong"/>
   </div>
   <div class="form-buttons-container">
     <button type="submit" id="add-product">Ajouter</button>
