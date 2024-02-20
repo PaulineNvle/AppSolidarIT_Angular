@@ -42,16 +42,16 @@ export class AddComponent {
     private router: Router)
   {
     this.productForm = this.fb.group({
-      id: [, Validators.required],
+      id: [],
       label: ['', Validators.required],
       descriptionShort: [''],
-      descriptionLong: [''],
+      descriptionLong: ['']
     });
   }
 
   onSubmit() {
     const newProduct: IProduct = this.productForm.value;
-
+    console.log("New Product", newProduct)
     if (this.productForm.valid) {
       this.productService.addProduct(newProduct).subscribe({
         next: () => this.router.navigate(['/products']),

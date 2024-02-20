@@ -1,102 +1,99 @@
 
+  <div>
+    <h2 class="products_title">Détail fiche produit</h2>
+  </div>
 
-<div>
-  <h2 class="products_title">Détail fiche produit</h2>
-</div>
-
-
-<div class="container" *ngFor="let p of products"> <!--*ngIf="selectedProduct" --> 
-  <div class="card">
-    <div class="label">
-      <span class="description"> Description du produit</span> <!--{{selectedProduct.label | uppercase}}-->
-      <p class="label">{{p.label}}</p> <!-- <label for="product-label"> </label>-->
-    </div>
-    <div class="information">
-      <!-- <input id="product-label" [(ngModel)]="selectedProduct.label" placeholder="label">--> <!-- voir si pas descriptopn a la place-->
-      <div style="text-align:center; padding: 6px">
-        {{p.descriptionLong}}
+<div *ngIf="product">
+  <div class="container">
+    <div class="card">
+      <div class="label">
+        <span class="description">Description du produit</span>
+        <p class="label">{{product.label}}</p> 
+      </div>
+      <div class="information">
+        <div style="text-align:center; padding: 6px">
+          {{product.descriptionLong}}
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="communication">
-  <p>Version 1 en cours de développement</p>
-</div>
-<div class="Documentation">
-  <link />
-  <link />
-</div>
-<div class="Release">
-  <span>Date</span>
-  <span>Texte explicatif</span>
+  <div class="communication">
+    <p>Version 1 en cours de développement</p>
+  </div>
+  <div class="Documentation">
+    <link />
+    <link />
+  </div>
+  <div class="Release">
+    <span>Date</span>
+    <span>Texte explicatif</span>
+    <div class="backhome">
+      <button routerLink="/dialog/add" type="button" class="btn">Ajouter un nouveau produit</button>
+      <button routerLink="/dialog/edit" type="button" class="btn">Editer un produit</button>
+    </div>
+  </div>
+  
+
+  <!--a mettre sur le coté-->
+
   <div class="backhome">
-		<button  routerLink="/dialog/add" type="button" class="btn">Ajouter un nouveau produit</button>
-    <button routerLink="/dialog/edit" type="button" class="btn">Editer un produit</button>
+    <button routerLink="/products" type="button" class="btn">Retour à la page précédente</button>
   </div>
- 
-</div>
- 
+  <div class="side container">
+    <div>
+      <button type="button">
+        <span class="material-symbols-outlined">
+  
+  </span>
+      </button>
+      <button type="button">
+        <span class="material-symbols-outlined">
+          contact_mail
+        </span>
+      </button>
+    </div>
 
-<!--a mettre sur le coté-->
+    <div>
+      <h4>Equipe</h4>
+      <ul>
+        <li>
+          <span>
+            <img src="/assets/img/avatar1.png"/>
+            <p>Nom de la personne 1</p>
+            <p>Mail de la personne</p>
+          </span>
+        </li>
+        <li>
+          <span>
+            <img src="/assets/img/avatar2.png" />
+            <p>Nom de la personne 2</p>
+            <p>Mail de la personne</p>
+          </span>
+        </li>
+        <li>
+          <span>
+            <img src="/assets/img/avatar3.png"/>
+            <p>Nom de la personne 3</p>
+            <p>Mail de la personne</p>
+          </span>
+        </li>
+        <li>
+          <span>
+            <img src="/assets/img/avatar4.png" />
+            <p>Nom de la personne 4</p>
+          </span>
+        </li>
+      </ul>
+    </div>
 
-<div class="backhome">
-  <button routerLink="/products" type="button" class="btn">Retour à la page précédente</button>
-</div>
-<div class="side container">
-  <div>
-    <button type="button">
-      <span class="material-symbols-outlined">
- 
-</span>
-    </button>
-    <button type="button">
-      <span class="material-symbols-outlined">
-        contact_mail
-      </span>
-    </button>
+    <div>
+      <h4>Fonctionalités</h4>
+      <p>jsp encore</p>
+      <p>jsp encore</p>
+    </div>
+
+
+
   </div>
-
-  <div>
-    <h4>Equipe</h4>
-    <ul>
-      <li>
-        <span>
-          <img src="/assets/img/avatar1.png"/>
-          <p>Nom de la personne 1</p>
-          <p>Mail de la personne</p>
-        </span>
-      </li>
-      <li>
-        <span>
-          <img src="/assets/img/avatar2.png" />
-          <p>Nom de la personne 2</p>
-          <p>Mail de la personne</p>
-        </span>
-      </li>
-      <li>
-        <span>
-          <img src="/assets/img/avatar3.png"/>
-          <p>Nom de la personne 3</p>
-          <p>Mail de la personne</p>
-        </span>
-      </li>
-      <li>
-        <span>
-          <img src="/assets/img/avatar4.png" />
-          <p>Nom de la personne 4</p>
-          v
-        </span>
-      </li>
-    </ul>
-  </div>
-
-  <div>
-    <h4>Fonctionalités</h4>
-    <p>jsp encore</p>
-    <p>jsp encore</p>
-  </div>
-
-
-
 </div>

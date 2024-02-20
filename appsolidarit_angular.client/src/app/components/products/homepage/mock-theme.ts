@@ -34,5 +34,4 @@ export const mockThemes: ITheme[] = [
     name: 'My Solidaris',
     descriptionShort: 'Rendre Solidaris et ses services accessibles à l\'affilié et aux prospects. Permettre aux membres de consulter et gérer eux-mêmes leur dossier et leur offrir des infos personnalisées.'
   },
-
 ];

@@ -8,11 +8,11 @@ import { IProduct } from '../../products/product-list/IProducts';
 })
 export class productService {
 
-  private urlBase = "http://localhost:5033/products/products"
+  private urlBase = "http://localhost:5033/api/Product"
   constructor(private http: HttpClient)
   { }
 
-// observable permet de faire des ope de facon asynchrone
+
 
 
   //GET
@@ -31,7 +31,7 @@ export class productService {
   //CREATE
   addProduct(product :IProduct): Observable<any> {
     return this.http
-      .post(this.urlBase, (product));
+      .post<IProduct>(this.urlBase, (product));
   }
 
   //UPDATE
@@ -43,8 +43,7 @@ export class productService {
   //DELETE
   deleteProduct(product: IProduct): Observable<IProduct> {
     if (confirm("Etes-vous sure de vouloir supprimer ce produit?")) {
-      //const index = mockContacts.findIndex(c => c.id === contact.id);
-      //mockContacts.splice(index,1) 
+      
       this.http
         .delete<IProduct>(`${this.urlBase}/${product.id}`)
     }
@@ -61,7 +60,7 @@ export class productService {
 
     } else {
       return this.http.get<IProduct>(`${this.urlBase}/${id}`);
-      console.log('error ');
+      console.log('error');
     }
   }
 }

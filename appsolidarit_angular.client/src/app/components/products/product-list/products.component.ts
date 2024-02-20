@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { mockProducts } from '../../products/product-list/mock-products';
-import { HttpClient } from '@angular/common/http';
-
-
+import { productService } from '../service/productService';
+import { IProduct } from '../../products/product-list/IProducts';
 
 
 @Component({
@@ -15,31 +13,30 @@ import { HttpClient } from '@angular/common/http';
   imports: [ProductsComponent,
     CommonModule,
     RouterModule
+  ],
+  providers: [
+    productService
   ]
 })
 export default class ProductsComponent implements OnInit{
 
-  products = mockProducts
-  productDetail?: any;
-  title = 'Nos services';
 
-  constructor(private route: ActivatedRoute) { }
-  
-  private urlBase = "http://localhost:5033"
-  private httpClient = inject(HttpClient)
+  title = 'Page d\'accueil';
+  product: IProduct | undefined;
+
+
+  constructor(
+    private route: ActivatedRoute,
+    private productService: productService
+  ) { }
 
   ngOnInit(): void {
-    this.httpClient.get(this.urlBase + "/api/Product")
-      .subscribe(PRODUCTS => {
-        this.products;
-      })
-
-
-      //((data: any) => {
-      //    console.log(data)
-
-      //});
-
-    //ngOnChanges()
+    const productId = (this.route.snapshot.paramMap.get('id'));
+    if (!productId) {
+      console.log("No productId");
+      return
+    }
+    this.productService.getProductByid(productId).subscribe(p => this.product = p)
   }
+
 }

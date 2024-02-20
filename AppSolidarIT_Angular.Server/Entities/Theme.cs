@@ -10,4 +10,6 @@ public partial class Theme
     public string? Name { get; set; }
 
     public string? DescriptionShort { get; set; }
+
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

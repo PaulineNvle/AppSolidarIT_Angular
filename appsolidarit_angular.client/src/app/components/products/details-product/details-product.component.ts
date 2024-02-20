@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { mockProducts } from '../../products/product-list/mock-products';
 import { productService } from '../service/productService';
-import { HttpClient } from '@angular/common/http';
+import { IProduct } from '../product-list/IProducts';
 
 
 
@@ -17,6 +17,7 @@ import { HttpClient } from '@angular/common/http';
   imports: [
     CommonModule,
     RouterModule,
+    NgIf
   ],
   providers: [
     productService
@@ -25,18 +26,24 @@ import { HttpClient } from '@angular/common/http';
 
 
 export default class DetailsComponent implements OnInit {
-  constructor(private route: ActivatedRoute) { }
 
   products = mockProducts;
   title = "Details";
+  product: IProduct |undefined;
 
-  private urlBase = "http://localhost:5033"
-  private httpClient = inject(HttpClient)
+  constructor(
+    private route: ActivatedRoute,
+    private productService : productService
+    ) { }
+ 
 
   ngOnInit(): void {
-    this.httpClient.get(this.urlBase + "/api/Product").subscribe((data: any) => {
-      console.log(data)
-    })
+    const productId = (this.route.snapshot.paramMap.get('id'));
+    if(!productId){
+      console.log("No productId");
+      return 
+    }
+    this.productService.getProductByid(productId).subscribe(p => this.product = p)
   }
 
 }

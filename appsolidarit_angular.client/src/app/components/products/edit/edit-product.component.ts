@@ -48,13 +48,8 @@ export class EditComponent {
     })
   }
 
- 
 
   ngOnInit(): void {
-    this.getProduct();
-  }
-
-  getProduct(): void {
     const id = (this.route.snapshot.paramMap.get('id'));
     console.log("id is: " + id);
     if (!id) {

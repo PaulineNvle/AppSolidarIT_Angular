@@ -17,7 +17,7 @@ export const mockProducts: IProduct[] = [
     image: '/assets/img/iCRM_Icon.png',
     theme: 'Contact Management',
     descriptionShort: 'Traçabilité',
-    descriptionLong: 'Son but: traçabilité des contacts(affiliés/ tiers / prestataires / prospects); assurer le suivi du traitement d\'une demande Front/Back); planifier/effectuer des enquêtes marketing suite à ces contacts; l’intégration de force de vente : contact proactif avec nos affiliés en fonction d’évènements de vie tels que naissances/mutation/etc.'
+    descriptionLong: 'Son but: traçabilité des contacts(affiliés / tiers / prestataires / prospects); assurer le suivi du traitement d\'une demande Front/Back); planifier/effectuer des enquêtes marketing suite à ces contacts; l’intégration de force de vente : contact proactif avec nos affiliés en fonction d’évènements de vie tels que naissances/mutation/etc.'
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ export const mockProducts: IProduct[] = [
     image: '/assets/img/iCRM_Icon.png',
     theme: 'Contact Management',
     descriptionShort: 'Gestion des dossiers',
-    descriptionLong: 'Son but : Prise de RDV (présentiel/Call/Visio), planifier et gérer les disponibilités et indisponibilités des agences/bureaux/chargés de clientèle; exposer ses dispos/indispos à d’autres applications tel que le site web/iCRM/…'
+    descriptionLong: 'Son but : Prise de RDV (présentiel / Call / Visio), planifier et gérer les disponibilités et indisponibilités des agences/bureaux/chargés de clientèle; exposer ses dispos/indispos à d’autres applications tel que le site web/iCRM/…'
   },
   {
     id: 4,

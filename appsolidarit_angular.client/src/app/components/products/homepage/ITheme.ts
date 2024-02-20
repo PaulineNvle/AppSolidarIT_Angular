@@ -1,5 +1,5 @@
 export interface ITheme {
-  id?: number;
+  id: number;
   image?: string;
   name: string;
   descriptionShort?: string;

@@ -5,6 +5,8 @@ import { MatCardModule } from "@angular/material/card";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { productService} from '../service/productService';
 import { mockThemes } from './mock-theme';
+import { ThemeService } from '../service/theme-service.service';
+import { ITheme } from './ITheme';
 
 
 
@@ -22,26 +24,28 @@ import { mockThemes } from './mock-theme';
     HttpClientModule
   ],
   providers: [
-    productService
+    productService,
+    ThemeService
   ]
 })
 export default class HomepageComponent implements OnInit{
 
-constructor(private route: ActivatedRoute) { }
+  themes = mockThemes;
+  title = 'Page d\'accueil'; 
+  
+  theme: ITheme[] = [];
+  constructor(
+  private route: ActivatedRoute,
+  private themeService: ThemeService
+  ) { }
 
-  private urlBase = "http://localhost:5033"
-  private httpClient = inject(HttpClient)
+
   ngOnInit(): void {
-    this.httpClient.get(this.urlBase + "/api/Theme").subscribe((data: any) => {
+    this.themeService.getTheme().subscribe(theme =>  {
+      this.theme = theme;
+      console.log(theme)
 
-      console.log(data)
       
     })
   }
-
-
-  themes = mockThemes;
-  title = 'Page d\'accueil';
-  
-
 }

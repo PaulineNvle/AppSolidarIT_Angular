@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-
 import DetailsComponent from './components/products/details-product/details-product.component';
 import HomepageComponent from './components/products/homepage/homepage.component';
 import { EditComponent } from './components/products/edit/edit-product.component';
@@ -16,12 +15,12 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'products',
+    path: 'product/:id',
     component: ProductsComponent,
     title: 'Nos services',
   },
   {
-    'path': 'details',
+    'path': 'details/:id',
     component: DetailsComponent,
     title: 'Détails du service',
   },
@@ -31,11 +30,10 @@ export const routes: Routes = [
     title: 'Ajouter un produit',
   },
   {
-    'path': 'dialog/edit',
+    'path': 'dialog/edit/:id',
     component: EditComponent,
     title: 'Editer un produit',
   }
-
 ];
 @NgModule({
   imports: [

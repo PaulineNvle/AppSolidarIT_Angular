@@ -4,21 +4,21 @@
   <button routerLink="" type="button" class="btn">Retour à la page précédente</button>
 </div>
 
-<div class="container" routerLink="/details" >
-  <div class="card" *ngFor="let p of products">
-    <div class="label">
-      <h2 class="label">{{p.label}}</h2>
-    </div>
-    <div class="information">
-      <div>
-        <img class="image" src=" {{ p.image }}" />
-        <!--<button [class.selected]="product === selectedProduct" type="button" (click)="onSelect(product)">-->
+
+<div *ngIf="product">
+  <div  class="container">
+    <div class="card">
+      <div class="label">
+        <h2 class="label">{{product.label}}</h2>
       </div>
-      <div style="text-align:center; padding: 6px">
-        {{p.descriptionShort}}
+      <div class="information">
+        <div>
+          <img routerLink="/details/{{product.id}}" class="image" src=" {{product.image }}" />
+        </div>
+        <div style="text-align:center; padding: 6px">
+          {{product.descriptionShort}}
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-

@@ -12,10 +12,10 @@
 <!--<div *ngIf="isLoading; else elseForm ">
   <app-loader/>
  </div>-->
-<form <!--#elseForm--> [formGroup]="productForm" (ngSubmit)="onSubmit()">
+<form #elseForm [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="product-id">ID: </label>
-    <input id="product-id" type="text" formControlName="id" readonly />
+    <input id="product-id" type="number" formControlName="id" />
   </div>
   <div>
     <label for="product-label">Sélectionnez une thématique de produit</label>

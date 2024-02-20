@@ -17,26 +17,28 @@ namespace AppSolidarIT_Angular.Server.Controllers
             _context = context;
         }
 
-        // <summary>
-        //     Récupère tout les products
-        // </summary>
-        // <returns>Et bien des products, non ?</returns>
-        // GET: api/<ProductsController>
+        /// <summary>
+        ///     Récupère tout les products
+        /// </summary>
+        /// <returns>Et bien des products, non ?</returns>
+        /// GET: api/<ProductsController>
         [HttpGet()]
         public IEnumerable<Product> GetAllProducts()
         {
             return _context.Products;
         }
 
-        // <summary>
-        //     Récupère un product à partir de son identifiant
-        // </summary>
-        // <returns></returns>
-        // GET api/<ProductsController>/5
-        [HttpGet("{id}")]
-        public ActionResult<Product> GetDetails(int Id)
-        {
-            var product = _context.Products?.Find(Id);
+        /// <summary>
+        ///     Récupère un product à partir de son identifiant
+        /// </summary>
+        /// <returns></returns>
+        /// GET api/<ProductsController>/5
+        [HttpGet("{ThemeId}")]
+        public ActionResult<Product> GetDetails(int ThemeId)
+        {   
+    
+
+            var product = _context.Products?.FirstOrDefault(p => p.ThemeId == ThemeId); // find en cherchant sur themeid
             if (product == null)
             {
                 return NotFound("Aie aie aie, non trouvé!");
@@ -46,11 +48,10 @@ namespace AppSolidarIT_Angular.Server.Controllers
 
        
 
-        // <summary>
-        //     Création d'un nouveau produit
-        // </summary>
-
-        // POST api/<ProductsController>
+        /// <summary>
+        ///     Création d'un nouveau produit
+        /// </summary>
+        /// POST api/<ProductsController>
         [HttpPost()]
         public ActionResult CreateProduct( Product product)
         {
@@ -75,12 +76,11 @@ namespace AppSolidarIT_Angular.Server.Controllers
             return Ok(product);
         }
 
-        // <summary>
-        //     Mise à jour d'un product
-        // </summary>
-
-        // <returns>Rien</returns>
-        // PUT api/<ProductsController>/5
+        /// <summary>
+        ///     Mise à jour d'un product
+        /// </summary>
+        /// <returns>Rien</returns>
+        /// PUT api/<ProductsController>/5
         [HttpPut("{id}")]
         public ActionResult PutProduct(Product product)
         {
@@ -102,12 +102,11 @@ namespace AppSolidarIT_Angular.Server.Controllers
 
 
 
-        // <summary>
-        //     On supprime un product
-        // </summary>
-
-        // <returns>Rien</returns>
-        // DELETE api/<BirdsController>/5
+        /// <summary>
+        ///     On supprime un product
+        /// </summary>
+        /// <returns>Rien</returns>
+        /// DELETE api/<BirdsController>/5
         [HttpDelete("{id}")]
         public ActionResult DeleteProduct(Product product)
         {
