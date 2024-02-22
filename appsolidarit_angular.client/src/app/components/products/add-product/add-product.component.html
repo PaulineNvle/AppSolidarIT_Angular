@@ -3,15 +3,7 @@
   <h2>Ajouter un produit</h2>
   <button routerLink="" type="button" class="btn">Retour</button>
 </div>
-<!--<div *ngIf="onSubmit">
-  <div class="alert alert-success">Produit enregistré avec succés!</div>
-</div>
-<div *ngIf="onSubmit==false">
-  <div class="alert alert-danger">Produit non enregistré, certains champs sont manquants! </div>
-</div>-->
-<!--<div *ngIf="isLoading; else elseForm ">
-  <app-loader/>
- </div>-->
+
 <form #elseForm [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="product-id">ID: </label>

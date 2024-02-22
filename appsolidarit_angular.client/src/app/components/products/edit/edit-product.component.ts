@@ -50,13 +50,13 @@ export class EditComponent {
 
 
   ngOnInit(): void {
-    const id = (this.route.snapshot.paramMap.get('id'));
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     console.log("id is: " + id);
     if (!id) {
       console.log("No ID provided");
       return;
     }
-    this.productService.getProductByid(id).subscribe((product) => {
+    this.productService.getProductById(id).subscribe((product) => {
       console.log(product)
       if (!product) {
         console.log("no product");

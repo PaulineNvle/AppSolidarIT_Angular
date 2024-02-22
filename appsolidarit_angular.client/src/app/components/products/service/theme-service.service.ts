@@ -20,7 +20,7 @@ export class ThemeService {
   }
 
   //GET BY ID
-  getThemeByid(id: string): Observable<ITheme> {
+  getThemeByid(id: number): Observable<ITheme> {
     return this.http
       .get<ITheme>(`${this.urlBase}/${id}`);
   }

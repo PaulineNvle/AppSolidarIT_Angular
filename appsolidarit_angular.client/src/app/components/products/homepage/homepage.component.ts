@@ -4,7 +4,6 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatCardModule } from "@angular/material/card";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { productService} from '../service/productService';
-import { mockThemes } from './mock-theme';
 import { ThemeService } from '../service/theme-service.service';
 import { ITheme } from './ITheme';
 
@@ -30,7 +29,7 @@ import { ITheme } from './ITheme';
 })
 export default class HomepageComponent implements OnInit{
 
-  themes = mockThemes;
+  
   title = 'Page d\'accueil'; 
   
   theme: ITheme[] = [];

@@ -1,7 +1,7 @@
 import { CommonModule, NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { mockProducts } from '../../products/product-list/mock-products';
+
 import { productService } from '../service/productService';
 import { IProduct } from '../product-list/IProducts';
 
@@ -26,8 +26,6 @@ import { IProduct } from '../product-list/IProducts';
 
 
 export default class DetailsComponent implements OnInit {
-
-  products = mockProducts;
   title = "Details";
   product: IProduct |undefined;
 
@@ -43,7 +41,6 @@ export default class DetailsComponent implements OnInit {
       console.log("No productId");
       return 
     }
-    this.productService.getProductByid(productId).subscribe(p => this.product = p)
+    this.productService.getProductById(productId).subscribe(p => this.product = p)
   }
-
 }

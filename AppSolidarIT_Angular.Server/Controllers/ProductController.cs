@@ -36,17 +36,14 @@ namespace AppSolidarIT_Angular.Server.Controllers
         [HttpGet("{ThemeId}")]
         public ActionResult<Product> GetDetails(int ThemeId)
         {   
-    
-
-            var product = _context.Products?.FirstOrDefault(p => p.ThemeId == ThemeId); // find en cherchant sur themeid
-            if (product == null)
+   
+            var product = _context.Products?.Where(p => p.ThemeId == ThemeId).ToList(); 
+            if (product == null || product.Count == 0)
             {
-                return NotFound("Aie aie aie, non trouvé!");
+                return NotFound("Aie aie aie, non trouvé! Thematique non existante");
             }
             return Ok(product);
         }
-
-       
 
         /// <summary>
         ///     Création d'un nouveau produit
@@ -67,7 +64,6 @@ namespace AppSolidarIT_Angular.Server.Controllers
                     ModelState.AddModelError("", "Context is null or ModelState is not valid");
                 }
                 
-
             }
             catch (DataException)
             {
@@ -98,9 +94,6 @@ namespace AppSolidarIT_Angular.Server.Controllers
             }
             return Ok(product);
         }
-
-
-
 
         /// <summary>
         ///     On supprime un product

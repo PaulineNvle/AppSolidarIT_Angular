@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, map, of } from 'rxjs';
+import { Observable, map, of, pipe } from 'rxjs';
 import { IProduct } from '../../products/product-list/IProducts';
+import { ITheme } from '../homepage/ITheme';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,6 @@ export class productService {
   { }
 
 
-
-
   //GET
   getProduct(): Observable<IProduct[]> {
     return this.http
@@ -22,11 +21,19 @@ export class productService {
       .pipe(map(response => response as IProduct[]));
   }
 
-  //GET BY ID
-  getProductByid(id: string):Observable<IProduct> {
+
+  //GET BY ID (THEMEid)
+  getProductByThemeId(themeId: number):Observable<IProduct[]> {
     return this.http
-      .get<IProduct>(`${this.urlBase}/${id}`);
+      .get<IProduct[]>(`${this.urlBase}/${themeId}`);
   }
+
+  // GET PRODUCT BY ID
+  getProductById(Id: number): Observable<IProduct> {
+    return this.http
+      .get<IProduct>(`${this.urlBase}/${Id}`);
+  }
+
 
   //CREATE
   addProduct(product :IProduct): Observable<any> {

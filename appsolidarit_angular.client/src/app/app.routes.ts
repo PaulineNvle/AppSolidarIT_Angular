@@ -15,7 +15,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'product/:id',
+    path: 'product/:themeId',
     component: ProductsComponent,
     title: 'Nos services',
   },

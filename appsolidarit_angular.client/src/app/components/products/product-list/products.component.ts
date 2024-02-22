@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { productService } from '../service/productService';
 import { IProduct } from '../../products/product-list/IProducts';
@@ -21,7 +21,7 @@ import { IProduct } from '../../products/product-list/IProducts';
 export default class ProductsComponent implements OnInit{
 
 
-  title = 'Page d\'accueil';
+  title = 'Nos services';
   product: IProduct | undefined;
 
 
@@ -31,12 +31,17 @@ export default class ProductsComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    const productId = (this.route.snapshot.paramMap.get('id'));
-    if (!productId) {
-      console.log("No productId");
+    const themeId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(themeId);
+
+    if (!themeId) {
+      console.log("No themeId");
       return
     }
-    this.productService.getProductByid(productId).subscribe(p => this.product = p)
+    this.productService.getProductByThemeId(themeId).subscribe(p => {
+       // this.product = p;
+      console.log("data", p)  
+    })
   }
-
 }
+// faire un console log de  console.log("data", p) pour voir si ma fonction et mon subscribe fonctionne

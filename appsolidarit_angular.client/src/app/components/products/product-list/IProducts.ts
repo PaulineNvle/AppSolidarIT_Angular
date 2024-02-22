@@ -2,7 +2,7 @@ export interface IProduct {
   id: number;
   image?: string;
   label?: string;
-  theme?: string;
+  themeId?: number;
   descriptionShort?: string;
   descriptionLong?: string;
 }
