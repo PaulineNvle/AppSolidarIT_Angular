@@ -1,8 +1,11 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { productService } from '../service/productService';
 import { IProduct } from '../../products/product-list/IProducts';
+import { Observable } from 'rxjs';
+
+
 
 
 @Component({
@@ -12,7 +15,9 @@ import { IProduct } from '../../products/product-list/IProducts';
   styleUrl: './products.component.css',
   imports: [ProductsComponent,
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgIf,
+    NgFor
   ],
   providers: [
     productService
@@ -20,10 +25,7 @@ import { IProduct } from '../../products/product-list/IProducts';
 })
 export default class ProductsComponent implements OnInit{
 
-
-  title = 'Nos services';
-  product: IProduct | undefined;
-
+  product$!: Observable<IProduct[]>;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,17 +33,13 @@ export default class ProductsComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    const themeId = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(themeId);
-
+    const themeId = Number(this.route.snapshot.paramMap.get('themeId'));
     if (!themeId) {
       console.log("No themeId");
       return
     }
-    this.productService.getProductByThemeId(themeId).subscribe(p => {
-       // this.product = p;
-      console.log("data", p)  
-    })
+    this.product$ = this.productService
+      .getProductByThemeId(themeId)
   }
+
 }
-// faire un console log de  console.log("data", p) pour voir si ma fonction et mon subscribe fonctionne

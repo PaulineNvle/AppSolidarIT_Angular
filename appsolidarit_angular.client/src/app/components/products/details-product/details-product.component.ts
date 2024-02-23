@@ -4,7 +4,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 
 import { productService } from '../service/productService';
 import { IProduct } from '../product-list/IProducts';
-
+import { Observable } from 'rxjs';
 
 
 
@@ -26,8 +26,8 @@ import { IProduct } from '../product-list/IProducts';
 
 
 export default class DetailsComponent implements OnInit {
-  title = "Details";
-  product: IProduct |undefined;
+
+  product$!: Observable<IProduct>;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,11 +36,13 @@ export default class DetailsComponent implements OnInit {
  
 
   ngOnInit(): void {
-    const productId = (this.route.snapshot.paramMap.get('id'));
+    const productId = Number(this.route.snapshot.paramMap.get('id'));
     if(!productId){
       console.log("No productId");
       return 
     }
-    this.productService.getProductById(productId).subscribe(p => this.product = p)
+    this.product$ = this.productService.getProductById(productId);
   }
 }
+
+

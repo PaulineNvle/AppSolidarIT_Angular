@@ -2,14 +2,14 @@
 
 <h2 class="homepage_title">Bienvenue chez SolidarIT !</h2>
 
-<div>
+<div *ngIf="theme">
   <div class="container">
-    <div class="card"  *ngFor="let t of theme">
+    <div routerLink="/product/{{t.id}}" class="card"  *ngFor="let t of theme">
       <div class="name">
         <h2>{{t.name}}</h2>
       </div>
       <div>
-        <img routerLink="/product/{{t.id}}"  class="image" src="{{t.image}}" />
+        <img class="image" src="{{t.image}}" />
       </div>
     </div>
   </div>

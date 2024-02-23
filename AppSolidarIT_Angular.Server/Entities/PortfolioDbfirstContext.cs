@@ -39,6 +39,9 @@ public partial class PortfolioDbfirstContext : DbContext
             entity.Property(e => e.DescriptionShort)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.Image)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.Label)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -74,6 +77,9 @@ public partial class PortfolioDbfirstContext : DbContext
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.DescriptionShort)
                 .HasMaxLength(250)
+                .IsUnicode(false);
+            entity.Property(e => e.Image)
+                .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Name).IsUnicode(false);
         });

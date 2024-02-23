@@ -35,7 +35,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
 
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
@@ -43,7 +45,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors("AllowAll");
+
 
 app.MapFallbackToFile("/index.html");
 

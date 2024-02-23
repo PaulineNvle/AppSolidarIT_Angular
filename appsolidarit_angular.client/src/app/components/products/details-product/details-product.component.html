@@ -3,14 +3,18 @@
     <h2 class="products_title">Détail fiche produit</h2>
   </div>
 
-<div *ngIf="product">
-  <div class="container">
+<div *ngIf="product$ | async as product" >
+  <div>
+    {{product |json}}
     <div class="card">
       <div class="label">
         <span class="description">Description du produit</span>
-        <p class="label">{{product.label}}</p> 
+        <p class="label">{{product.label}}</p>
       </div>
       <div class="information">
+        <div style="text-align:center; padding: 6px">
+        {{product.descriptionShort}}
+        </div>
         <div style="text-align:center; padding: 6px">
           {{product.descriptionLong}}
         </div>
@@ -38,14 +42,14 @@
   <!--a mettre sur le coté-->
 
   <div class="backhome">
-    <button routerLink="/products" type="button" class="btn">Retour à la page précédente</button>
+    <button routerLink="" type="button" class="btn">Retour à la page précédente</button>
   </div>
   <div class="side container">
     <div>
       <button type="button">
         <span class="material-symbols-outlined">
-  
-  </span>
+          contact_mail
+        </span>
       </button>
       <button type="button">
         <span class="material-symbols-outlined">
@@ -58,42 +62,30 @@
       <h4>Equipe</h4>
       <ul>
         <li>
-          <span>
-            <img src="/assets/img/avatar1.png"/>
-            <p>Nom de la personne 1</p>
-            <p>Mail de la personne</p>
-          </span>
+          Nom de la personne 1
         </li>
         <li>
-          <span>
-            <img src="/assets/img/avatar2.png" />
-            <p>Nom de la personne 2</p>
-            <p>Mail de la personne</p>
-          </span>
+          Nom de la personne 2
         </li>
         <li>
-          <span>
-            <img src="/assets/img/avatar3.png"/>
-            <p>Nom de la personne 3</p>
-            <p>Mail de la personne</p>
-          </span>
+          Nom de la personne 3
         </li>
         <li>
-          <span>
-            <img src="/assets/img/avatar4.png" />
-            <p>Nom de la personne 4</p>
-          </span>
+          Nom de la personne 4
         </li>
       </ul>
     </div>
 
     <div>
       <h4>Fonctionalités</h4>
-      <p>jsp encore</p>
-      <p>jsp encore</p>
+      <p>Don't know</p>
+      <p>Don't know</p>
     </div>
-
 
 
   </div>
 </div>
+
+<div *ngIf ="!(product$ | async)">
+  <p>Chargement des détails du produit...</p>
+  </div>

@@ -7,13 +7,15 @@ public partial class Product
 {
     public int Id { get; set; }
 
-    public string Label { get; set; } = null!;
+    public string? Label { get; set; }
 
     public int? ThemeId { get; set; }
 
     public string? DescriptionShort { get; set; }
 
     public string? DescriptionLong { get; set; }
+
+    public string? Image { get; set; }
 
     public virtual Theme? Theme { get; set; }
 }

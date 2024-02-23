@@ -5,20 +5,26 @@
 </div>
 
 
-<div *ngIf="product">
-  <div  class="container">
-    <div class="card">
+<div *ngIf="product$ | async as product">
+  <div *ngFor="let prod of product">
+    <!--{{prod |json}}-->
+    <div routerLink="/details/{{prod.id}}" class="card">
       <div class="label">
-        <h2 class="label">{{product.label}}</h2>
+        <h2 class="label">{{prod.label}}</h2>
       </div>
       <div class="information">
         <div>
-          <img routerLink="/details/{{product.id}}" class="image" src="{{product.image }}"/>
+          <img class="image" src="{{prod.image}}" />
         </div>
         <div style="text-align:center; padding: 6px">
-          {{product.descriptionShort}}
+          {{prod.descriptionShort}}
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div *ngIf="!product$">
+  <p>Chargement des détails des thématiques...</p>
+</div>
+

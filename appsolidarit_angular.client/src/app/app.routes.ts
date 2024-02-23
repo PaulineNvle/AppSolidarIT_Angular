@@ -22,7 +22,7 @@ export const routes: Routes = [
   {
     'path': 'details/:id',
     component: DetailsComponent,
-    title: 'Détails du service',
+    title: 'Détail fiche produit',
   },
   {
     'path': 'dialog/add',

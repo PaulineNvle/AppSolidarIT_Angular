@@ -18,14 +18,22 @@ namespace AppSolidarIT_Angular.Server.Controllers
 
 
 
-
+        /// <summary>
+        ///     Récupère tout les theme
+        /// </summary>
+        /// <returns>Et bien des products, non ?</returns>
+        /// GET: api/<ThemeController>
         [HttpGet()]
         public IEnumerable<Theme> GetAllThemes()
         {
             return _context.Themes;
 
         }
-
+        /// <summary>
+        ///     Récupère un theme à partir de son identifiant
+        /// </summary>
+        /// <returns></returns>
+        /// GET api/<ThemeController>/5
         [HttpGet("{Id}")]
 
         public ActionResult<Theme> GetTheme(int Id)
@@ -38,7 +46,10 @@ namespace AppSolidarIT_Angular.Server.Controllers
             return Ok(theme);
 
         }
-
+        /// <summary>
+        ///     Création d'un nouveau theme
+        /// </summary>
+        /// POST api/<ThemeController>
         [HttpPost()]
         public ActionResult CreateTheme( Theme theme)
         {
@@ -58,7 +69,11 @@ namespace AppSolidarIT_Angular.Server.Controllers
             }
             return Ok(theme);
         }
-
+        /// <summary>
+        ///     Mise à jour d'un theme
+        /// </summary>
+        /// <returns>Rien</returns>
+        /// PUT api/<ThemeController>/5
         [HttpPut("{id}")]
         public ActionResult UpdateProduct( Theme theme)
         {
@@ -79,7 +94,11 @@ namespace AppSolidarIT_Angular.Server.Controllers
 
         }
 
-
+        /// <summary>
+        ///     On supprime un theme
+        /// </summary>
+        /// <returns>Rien</returns>
+        /// DELETE api/<ThemeController>/5
         [HttpDelete("{id}")]
 
         public ActionResult DeleteProduct(Theme theme)

@@ -23,7 +23,6 @@ import { ITheme } from './ITheme';
     HttpClientModule
   ],
   providers: [
-    productService,
     ThemeService
   ]
 })
@@ -43,8 +42,6 @@ export default class HomepageComponent implements OnInit{
     this.themeService.getTheme().subscribe(theme =>  {
       this.theme = theme;
       console.log(theme)
-
-      
     })
   }
 }

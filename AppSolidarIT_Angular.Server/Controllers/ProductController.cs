@@ -29,10 +29,10 @@ namespace AppSolidarIT_Angular.Server.Controllers
         }
 
         /// <summary>
-        ///     Récupère un product à partir de son identifiant
+        ///     Récupère une liste de product a partir de themeid
         /// </summary>
         /// <returns></returns>
-        /// GET api/<ProductsController>/5
+        /// GET api/<ProductsController>/
         [HttpGet("{ThemeId}")]
         public ActionResult<Product> GetDetails(int ThemeId)
         {   
@@ -44,6 +44,7 @@ namespace AppSolidarIT_Angular.Server.Controllers
             }
             return Ok(product);
         }
+   
 
         /// <summary>
         ///     Création d'un nouveau produit
@@ -99,7 +100,7 @@ namespace AppSolidarIT_Angular.Server.Controllers
         ///     On supprime un product
         /// </summary>
         /// <returns>Rien</returns>
-        /// DELETE api/<BirdsController>/5
+        /// DELETE api/<ProductsController>/5
         [HttpDelete("{id}")]
         public ActionResult DeleteProduct(Product product)
         {

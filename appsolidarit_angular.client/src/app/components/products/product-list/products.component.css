@@ -4,10 +4,8 @@
   align-content: center;
   justify-content: flex-end;
 }
-
-
-/* btn up left*/
 .btn {
+
   padding: 4px;
   width: 240px;
   height: 50px;
@@ -22,7 +20,6 @@
   -webkit-transition: background 200ms ease-in-out;
   transition: background 100ms ease-in-out;
 }
-
   .btn:hover {
     background-image: -webkit-linear-gradient(45deg, #c1002a 50%, transparent 50%);
     background-image: linear-gradient(45deg, #c1002a 50%, transparent 50%);
@@ -30,14 +27,6 @@
     color: #f2d9da;
   }
 
-.products_title {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  font-family: 'Open Sans', sans-serif;
-  padding-top: 20px;
-  text-align: center;
-}
 
 
 .container {
@@ -82,18 +71,16 @@
   justify-content: center;
   align-content: center;
   font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
 }
 
 .image {
   width: 70px;
   height: 70px;
   list-style-type: none;
-
 }
 
-.image:hover {
-  cursor: pointer;
-}
+
 
 .container .card .button {
   width: 100%;
@@ -102,18 +89,6 @@
   background: none;
 }
 
-.btnCard {
-  padding: 4px;
- 
-  font-weight: bold;
-  background: #f2d9da;
-  border-style: none;
-  border-radius: 5px;
-  border-color: #c1002a;
-  color: #c1002a;
-  background-position: 100%;
-  background-size: 400%;
-}
 .information {
   display: flex;
   flex-direction: column;
