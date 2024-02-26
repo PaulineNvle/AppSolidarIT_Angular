@@ -51,7 +51,7 @@ namespace AppSolidarIT_Angular.Server.Controllers
         /// </summary>
         /// POST api/<ProductsController>
         [HttpPost()]
-        public ActionResult CreateProduct( Product product)
+        public ActionResult CreateProduct(Product product)
         {
             try
             {
@@ -59,18 +59,21 @@ namespace AppSolidarIT_Angular.Server.Controllers
                 {
                     _context.Products.Add(product);
                     _context.SaveChanges();
-                    
+
+                    return CreatedAtAction(nameof(GetDetails), new { id = product.Id }, product);
+
                 } else{
-            // Handle the case where _context is null
-                    ModelState.AddModelError("", "Context is null or ModelState is not valid");
+                    // Le modèle n'est pas valide, renvoyer les erreurs de validation
+                    return BadRequest(ModelState);
+
                 }
-                
             }
-            catch (DataException)
+            catch (Exception ex)
             {
-                ModelState.AddModelError("", "Impossible de créer le produit , verifier les conditions et essayez encore");
+                // Une exception s'est produite lors de l'ajout du produit
+                Console.WriteLine($"Une erreur s'est produite lors de la création du produit : {ex.Message}");
+                return BadRequest(ModelState);
             }
-            return Ok(product);
         }
 
         /// <summary>
@@ -102,21 +105,24 @@ namespace AppSolidarIT_Angular.Server.Controllers
         /// <returns>Rien</returns>
         /// DELETE api/<ProductsController>/5
         [HttpDelete("{id}")]
-        public ActionResult DeleteProduct(Product product)
+        public ActionResult DeleteProduct(int Id)
         {
             try
             {
-                if (ModelState.IsValid)
+                var product = _context.Products.Find(Id);
+                if (product == null)
                 {
-                    _context.Products.Remove(product);
-                    _context.SaveChanges();
+                   return NotFound("Produit non trouvé");
                 }
+                _context.Products.Remove(product);
+                _context.SaveChanges();
+
+                return Ok("Produit supprimé avec succès");
             }
-            catch (DataException)
+            catch (Exception ex)
             {
-                ModelState.AddModelError("", "Impossible de supprimer le produit");
+                return StatusCode(500, $"Une erreur s'est produite: {ex.Message}");
             }
-            return Ok(product);
         }
     }
 }

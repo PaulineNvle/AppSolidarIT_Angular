@@ -73,11 +73,12 @@ export class EditComponent {
 
  
   onSave() {
-    if (this.editProductForm.valid)
-      this.productService.editProduct(this.editProductForm.value).subscribe({
+    if (this.editProductForm.valid && this.product) {
+      const updatedProduct = { ...this.editProductForm.value, id: this.product.id };
+      this.productService.editProduct(updatedProduct).subscribe({
         next: () => this.router.navigate(['/products']),
       });
-
+    }
   }
 
   onDelete() {

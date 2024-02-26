@@ -41,7 +41,8 @@ export default class DetailsComponent implements OnInit {
       console.log("No productId");
       return 
     }
-    this.product$ = this.productService.getProductById(productId);
+    this.product$ = this.productService
+      .getProductById(productId);
   }
 }
 

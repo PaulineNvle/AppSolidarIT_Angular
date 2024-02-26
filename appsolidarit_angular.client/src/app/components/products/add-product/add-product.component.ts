@@ -23,7 +23,6 @@ import { Router } from '@angular/router';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterLink,
     DetailsComponent
   ],
   providers: [
@@ -49,23 +48,45 @@ export class AddComponent {
     });
   }
 
+  //onSubmit() {
+  //  const newProduct: IProduct = this.productForm.value;
+  //  console.log("New Product", newProduct)
+  //  if (this.productForm.valid) {
+  //    this.productService.addProduct(newProduct).subscribe({
+  //      next: () => this.router.navigate(['/products']),
+  //      error: (error: HttpErrorResponse) => {
+  //        console.log(error);
+  //        if (error.error.errors) {
+  //          console.log('Erreur de validation', error.error.errors);
+  //        }
+  //      }
+
+  //    });
+
+  //    } else if (this.productForm.invalid) {
+  //      console.log('Le formulaire est invalide:', this.productForm.errors, 'newProduct', newProduct);
+  //  }
+
   onSubmit() {
-    const newProduct: IProduct = this.productForm.value;
-    console.log("New Product", newProduct)
     if (this.productForm.valid) {
-      this.productService.addProduct(newProduct).subscribe({
-        next: () => this.router.navigate(['/products']),
+      const newProduct: IProduct = this.productForm.value;
+      this.productService
+        .addProduct(newProduct)
+        .subscribe({
+        next: () => {
+          console.log("Produit ajouté avec succès");
+          this.productForm.reset();
+          this.router.navigate(['/products']);
+        },
         error: (error: HttpErrorResponse) => {
-          console.log(error);
+          console.error('Erreur lors de l\'ajout du produit:', error);
           if (error.error.errors) {
             console.log('Erreur de validation', error.error.errors);
           }
         }
-
       });
-     
-      } else if (this.productForm.invalid) {
-        console.log('Le formulaire est invalide:', this.productForm.errors, 'newProduct', newProduct);
+    } else {
+      console.log('Le formulaire est invalide:', this.productForm.errors);
     }
 
   }

@@ -4,15 +4,6 @@
   <div>
     <h2>{{product.label}}Details</h2>
   </div>
-  <!--<div *ngIf="onSave">
-    <div class="alert alert-success">Produit édité avec succés!</div>
-  </div>
-  <div *ngIf="onSave==false">
-    <div class="alert alert-danger">Produit non édité, certains champs sont manquants! </div>
-  </div>-->
-  <!--<div *ngIf="isLoading; else elseForm ">
-    <app-loader />
-  </div>-->
   <form #elseForm [formGroup]="editProductForm" (ngSubmit)="onSave()">
     <div>
       <label for="product-id">Product ID: </label>

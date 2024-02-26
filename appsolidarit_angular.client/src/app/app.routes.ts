@@ -2,9 +2,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import DetailsComponent from './components/products/details-product/details-product.component';
 import HomepageComponent from './components/products/homepage/homepage.component';
-import { EditComponent } from './components/products/edit/edit-product.component';
 import { AddComponent } from './components/products/add-product/add-product.component';
 import ProductsComponent from './components/products/product-list/products.component';
+import { EditComponent } from './components/products/edit/edit-product.component';
 
 
 export const routes: Routes = [

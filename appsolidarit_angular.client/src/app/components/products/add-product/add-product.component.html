@@ -5,10 +5,10 @@
 </div>
 
 <form #elseForm [formGroup]="productForm" (ngSubmit)="onSubmit()">
-  <div>
+  <!--<div>
     <label for="product-id">ID: </label>
     <input id="product-id" type="number" formControlName="id" />
-  </div>
+  </div>-->
   <div>
     <label for="product-label">Sélectionnez une thématique de produit</label>
     <select id="product-label" formControlName="label">
@@ -32,6 +32,6 @@
   </div>
   <div class="form-buttons-container">
     <button type="submit" id="add-product">Ajouter</button>
-    <button routerLink="/products" class="goBack">Annuler</button>
+    <button routerLink="" class="goBack">Annuler</button>
   </div>
 </form>

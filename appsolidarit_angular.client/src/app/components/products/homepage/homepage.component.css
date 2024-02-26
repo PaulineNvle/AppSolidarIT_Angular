@@ -75,4 +75,23 @@
   border: none;
   background: none;
 }
+.btn {
+  padding: 4px;
+  background: #c1002a;
+  border-style: none;
+  border-radius: 5px;
+  border-color: #c1002a;
+  color: #f2d9da;
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 200ms ease-in-out;
+  transition: background 100ms ease-in-out;
+}
+
+  .btn:hover {
+    background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-position: 0;
+    color: #c1002a;
+  }
 
