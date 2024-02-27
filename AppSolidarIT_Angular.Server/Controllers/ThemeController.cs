@@ -51,7 +51,7 @@ namespace AppSolidarIT_Angular.Server.Controllers
         /// </summary>
         /// POST api/<ThemeController>
         [HttpPost()]
-        public ActionResult CreateTheme( Theme theme)
+        public ActionResult CreateTheme(Theme theme)
         {
             try
             {
@@ -59,16 +59,24 @@ namespace AppSolidarIT_Angular.Server.Controllers
                 {
                     _context.Themes.Add(theme);
                     _context.SaveChanges();
+
+                    return CreatedAtAction(nameof(GetTheme), new { id = theme.Id }, theme);
                 }
-
-
+                else
+                {
+                    // Le modèle n'est pas valide, renvoyer les erreurs de validation
+                    return BadRequest(ModelState);
+                }
             }
-            catch (DataException)
+            catch (Exception ex)
             {
-                ModelState.AddModelError("", "Impossible de créer le theme , verifier les conditions et essayez encore");
+                // Une exception s'est produite lors de l'ajout du thème
+                Console.WriteLine($"Une erreur s'est produite lors de la création du thème : {ex.Message}");
+                return BadRequest(ModelState);
             }
-            return Ok(theme);
         }
+
+
         /// <summary>
         ///     Mise à jour d'un theme
         /// </summary>

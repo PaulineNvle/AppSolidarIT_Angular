@@ -60,7 +60,9 @@ namespace AppSolidarIT_Angular.Server.Controllers
                     _context.Products.Add(product);
                     _context.SaveChanges();
 
-                    return CreatedAtAction(nameof(GetDetails), new { id = product.Id }, product);
+                    Console.WriteLine(product.Id);
+
+                    return Ok(product);
 
                 } else{
                     // Le modèle n'est pas valide, renvoyer les erreurs de validation
@@ -72,6 +74,8 @@ namespace AppSolidarIT_Angular.Server.Controllers
             {
                 // Une exception s'est produite lors de l'ajout du produit
                 Console.WriteLine($"Une erreur s'est produite lors de la création du produit : {ex.Message}");
+                // Ajoutez l'erreur à ModelState pour qu'elle soit renvoyée dans le corps de la réponse BadRequest
+                ModelState.AddModelError("", $"Une erreur s'est produite lors de la création du produit : {ex.Message}");
                 return BadRequest(ModelState);
             }
         }
