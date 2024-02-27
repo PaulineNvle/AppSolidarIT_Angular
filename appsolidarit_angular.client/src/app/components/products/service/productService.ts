@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, map, of, pipe } from 'rxjs';
-import { IProduct } from '../../products/product-list/IProducts';
+import { IProductUpdate } from '../product-list/IProductsUpdate';
+import { IProductCreate } from '../product-list/IProductsCreate';
 
 @Injectable({
   providedIn: 'root'
@@ -14,58 +15,58 @@ export class productService {
 
 
   //GET
-  getAllProduct(): Observable<IProduct[]> {
+  getAllProduct(): Observable<IProductUpdate[]> {
     return this.http
-      .get<IProduct[]>(this.urlBase)
-      .pipe(map(response => response as IProduct[]));
+      .get<IProductUpdate[]>(this.urlBase)
+      .pipe(map(response => response as IProductUpdate[]));
   }
 
   //GET BY ID (THEMEid)
-  getProductByThemeId(themeId: number):Observable<IProduct[]> {
+  getProductByThemeId(themeId: number):Observable<IProductUpdate[]> {
     return this.http
-      .get<IProduct[]>(`${this.urlBase}/${themeId}`);
+      .get<IProductUpdate[]>(`${this.urlBase}/?themeId=${themeId}`);
   }
 
   // GET PRODUCT BY ID
-  getProductById(Id: number): Observable<IProduct> {
+  getProductById(Id: number): Observable<IProductUpdate> {
     return this.http
-      .get<IProduct>(`${this.urlBase}/${Id}`);
+      .get<IProductUpdate>(`${this.urlBase}/${Id}`);
   }
 
 
   //CREATE
-  addProduct(product: IProduct): Observable<any> {
+  addProduct(product: IProductCreate): Observable<any> {
     return this.http
-      .post<IProduct>(this.urlBase, (product));
+      .post<IProductCreate>(this.urlBase, (product));
   }
 
   //UPDATE
-  editProduct(product: IProduct): Observable<any> {
+  editProduct(product: IProductUpdate): Observable<any> {
     return this.http
-      .put<IProduct[]>(`${this.urlBase}/${product.id}`, product);
+      .put<IProductUpdate[]>(`${this.urlBase}/${product.id}`, product);
   }
 
   //DELETE
-  deleteProduct(product: IProduct): Observable<IProduct> {
+  deleteProduct(product: IProductUpdate): Observable<IProductUpdate> {
     if (confirm("Etes-vous sure de vouloir supprimer ce produit?")) {
       
       this.http
-        .delete<IProduct>(`${this.urlBase}/${product.id}`)
+        .delete<IProductUpdate>(`${this.urlBase}/${product.id}`)
     }
     return of(product);
   }
 
   //DELETE BY ID
-  deleteProductById(id: number): Observable<IProduct> {
+  deleteProductById(id: number): Observable<IProductUpdate> {
     if (confirm("Etes-vous sure de vouloir supprimer ce produit?")) {
 
       console.log(`${this.urlBase}/${id}`)
       return this.http
-        .delete<IProduct>(`${this.urlBase}/${id}`)
+        .delete<IProductUpdate>(`${this.urlBase}/${id}`)
 
     } else {
       console.log('error');
-      return this.http.get<IProduct>(`${this.urlBase}/${id}`);
+      return this.http.get<IProductUpdate>(`${this.urlBase}/${id}`);
       
     }
   }

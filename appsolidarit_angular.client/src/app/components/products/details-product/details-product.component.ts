@@ -1,9 +1,9 @@
 import { CommonModule, NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { productService } from '../service/productService';
-import { IProduct } from '../product-list/IProducts';
+import { IProductUpdate } from '../product-list/IProductsUpdate';
 import { Observable } from 'rxjs';
 
 
@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
   imports: [
     CommonModule,
     RouterModule,
-    NgIf
+    NgIf,
   ],
   providers: [
     productService
@@ -27,11 +27,12 @@ import { Observable } from 'rxjs';
 
 export default class DetailsComponent implements OnInit {
 
-  product$!: Observable<IProduct>;
+  product$!: Observable<IProductUpdate>;
 
   constructor(
     private route: ActivatedRoute,
-    private productService : productService
+    private productService: productService,
+    private router: Router
     ) { }
  
 

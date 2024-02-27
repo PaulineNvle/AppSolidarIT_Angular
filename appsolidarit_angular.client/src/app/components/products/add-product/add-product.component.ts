@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import DetailsComponent from '../details-product/details-product.component';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../../../core/navigation/loader/loader.component';
 import { productService } from '../service/productService';
 import ProductsComponent from '../product-list/products.component';
-import { IProduct } from '../product-list/IProducts';
+import { IProductCreate } from '../product-list/IProductsCreate';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -33,6 +33,7 @@ export class AddComponent {
   productForm: FormGroup;
   title = "Ajouter un produit";
   isLoading: boolean = false;
+  product: IProductCreate | undefined;
 
   constructor(
     private productService: productService,
@@ -41,35 +42,23 @@ export class AddComponent {
     private router: Router)
   {
     this.productForm = this.fb.group({
-      id: [],
-      label: ['', Validators.required],
+      label: [''],
+      themeId: [null, Number, Validators.required],
       descriptionShort: [''],
       descriptionLong: ['']
     });
   }
 
-  //onSubmit() {
-  //  const newProduct: IProduct = this.productForm.value;
-  //  console.log("New Product", newProduct)
-  //  if (this.productForm.valid) {
-  //    this.productService.addProduct(newProduct).subscribe({
-  //      next: () => this.router.navigate(['/products']),
-  //      error: (error: HttpErrorResponse) => {
-  //        console.log(error);
-  //        if (error.error.errors) {
-  //          console.log('Erreur de validation', error.error.errors);
-  //        }
-  //      }
-
-  //    });
-
-  //    } else if (this.productForm.invalid) {
-  //      console.log('Le formulaire est invalide:', this.productForm.errors, 'newProduct', newProduct);
-  //  }
 
   onSubmit() {
     if (this.productForm.valid) {
-      const newProduct: IProduct = this.productForm.value;
+      const newProduct = {
+        label : this.productForm.controls["label"].value,
+        themeId: Number(this.productForm.controls["themeId"].value),
+        descriptionShort: this.productForm.controls["descriptionShort"].value,
+        descriptionLong: this.productForm.controls["descriptionLong"].value
+      }
+      
       this.productService
         .addProduct(newProduct)
         .subscribe({

@@ -23,9 +23,14 @@ namespace AppSolidarIT_Angular.Server.Controllers
         /// <returns>Et bien des products, non ?</returns>
         /// GET: api/<ProductsController>
         [HttpGet()]
-        public IEnumerable<Product> GetAllProducts()
+        public IEnumerable<Product> GetAllProducts([FromQuery] int? themeId)
         {
-            return _context.Products;
+            IQueryable<Product> products = _context.Products;
+            if (themeId.HasValue)
+            {
+                products = products.Where(p => p.ThemeId == themeId);
+            }
+            return products;
         }
 
         /// <summary>
@@ -33,17 +38,19 @@ namespace AppSolidarIT_Angular.Server.Controllers
         /// </summary>
         /// <returns></returns>
         /// GET api/<ProductsController>/
-        [HttpGet("{ThemeId}")]
-        public ActionResult<Product> GetDetails(int ThemeId)
+        [HttpGet("{Id}")]
+        public ActionResult<Product> GetDetails(int Id)
         {   
    
-            var product = _context.Products?.Where(p => p.ThemeId == ThemeId).ToList(); 
-            if (product == null || product.Count == 0)
+            var product = _context.Products?.Find(Id); 
+            if (product == null )
             {
-                return NotFound("Aie aie aie, non trouvé! Thematique non existante");
+                return NotFound("Aie aie aie, non trouvé! Produit non existant");
             }
             return Ok(product);
         }
+
+   
    
 
         /// <summary>

@@ -22,7 +22,10 @@
         </div>
       </div>
     </div>
-
+    <div class="backhome">
+      <button routerLink="/dialog/add" type="button" class="btn">Ajouter un nouveau produit</button>
+      <button [routerLink]="'/dialog/edit/' + product.id" type="button" class="btn">Modifier</button>
+    </div>
     <div class="communication">
       <p>Version 1 en cours de développement</p>
     </div>
@@ -31,12 +34,12 @@
       <link />
     </div>
     <div class="Release">
+
       <span>Date</span>
       <span>Texte explicatif</span>
-      <div class="backhome">
-        <button routerLink="/dialog/add" type="button" class="btn">Ajouter un nouveau produit</button>
-        <button [routerLink]="'/dialog/edit/' + product.id" type="button" class="btn">Editer un produit</button>
-      </div>
+
+
+
     </div>
   </div>
   <div *ngIf="!(product$ | async)">

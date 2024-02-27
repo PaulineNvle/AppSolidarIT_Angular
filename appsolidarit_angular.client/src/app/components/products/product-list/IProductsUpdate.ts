@@ -1,8 +1,8 @@
-export interface IProduct {
+export interface IProductUpdate {
   id: number;
   image?: string;
   label?: string;
-  themeId: string;
+  themeId: number;
   descriptionShort?: string;
   descriptionLong?: string;
 

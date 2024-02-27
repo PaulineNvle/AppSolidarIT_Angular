@@ -60,7 +60,9 @@ namespace AppSolidarIT_Angular.Server.Controllers
                     _context.Themes.Add(theme);
                     _context.SaveChanges();
 
-                    return CreatedAtAction(nameof(GetTheme), new { id = theme.Id }, theme);
+                    Console.WriteLine(theme.Id);
+
+                    return Ok(theme);
                 }
                 else
                 {

@@ -2,7 +2,7 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { productService } from '../service/productService';
-import { IProduct } from '../../products/product-list/IProducts';
+import { IProductUpdate } from '../../products/product-list/IProductsUpdate';
 import { Observable } from 'rxjs';
 
 
@@ -25,7 +25,7 @@ import { Observable } from 'rxjs';
 })
 export default class ProductsComponent implements OnInit{
 
-  product$!: Observable<IProduct[]>;
+  product$!: Observable<IProductUpdate[]>;
 
   constructor(
     private route: ActivatedRoute,

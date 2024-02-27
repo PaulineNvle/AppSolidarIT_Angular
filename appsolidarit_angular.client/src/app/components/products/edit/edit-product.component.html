@@ -2,23 +2,23 @@
 
 
   <div>
-    <h2>{{product.label}}Details</h2>
+    <h2> Detail de : {{product.label}}</h2>
   </div>
-  <form #elseForm [formGroup]="editProductForm" (ngSubmit)="onSave()">
+  <form #elseForm [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
     <div>
-      <label for="product-id">Product ID: </label>
-      <input id="product-id" type="text" formControlName="id" readonly/>
+      <label for="product-label">Quel est le nom de ce produit?</label>
+      <input id="product-label" type="text" formControlName="label" />
     </div>
     <div>
-      <label for="label">Sélectionnez une thématique de produit:</label>
-      <select id="label" formControlName="label">
-        <option value="Business Management">Business Management</option>
-        <option value="Contact Management">Contact Management</option>
-        <option value="SolidarIT as a Service">SolidarIT as a Services</option>
-        <option value="My Solidaris">My Solidaris</option>
-        <option value="Case Management">Case Management</option>
+      <label for="product-themeId">Sélectionnez une thématique de produit:</label>
+      <select id="product-themeId" formControlName="themeId">
+        <option value="1">Business Management</option>
+        <option value="2">Contact Management</option>
+        <option value="3">SolidarIT as a Services</option>
+        <option value="4">My Solidaris</option>
+        <option value="5">Case Management</option>
       </select>
-      <div *ngIf="editProductForm.controls['label'].errors && (editProductForm.controls['label'].dirty || editProductForm.controls['label'].touched)">
+      <div *ngIf="editProductForm.controls['themId'].errors && (editProductForm.controls['themeId'].dirty || editProductForm.controls['themeId'].touched)">
         La thématique est requise
       </div>
     </div>
@@ -37,3 +37,5 @@
   </form>
   <button (click)="onDelete()" id="delete-product">Supprimer le produit</button>
 </div>
+
+{{product | json}}
