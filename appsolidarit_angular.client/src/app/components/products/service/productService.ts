@@ -58,7 +58,7 @@ export class productService {
 
   //DELETE BY ID
   deleteProductById(id: number): Observable<IProductUpdate> {
-    if (confirm("(id)Etes-vous sure de vouloir supprimer ce produit?")) {
+    if (confirm("Etes-vous sure de vouloir supprimer ce produit? ")) {
 
       console.log(`${this.urlBase}/${id}`)
       return this.http

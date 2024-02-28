@@ -13,3 +13,5 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(HttpClientModule),
   provideHttpClient()]
 };
+
+//http interceptor

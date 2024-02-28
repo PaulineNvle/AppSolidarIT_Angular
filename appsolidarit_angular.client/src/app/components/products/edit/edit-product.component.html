@@ -1,8 +1,6 @@
-<div >
-
-
+<div>
   <div>
-    <h2> Detail de : {{product.label}}</h2>
+    <h2> Detail de : </h2>
   </div>
   <form *ngIf="product" #elseForm [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
     <div>

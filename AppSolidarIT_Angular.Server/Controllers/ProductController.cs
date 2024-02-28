@@ -115,23 +115,24 @@ namespace AppSolidarIT_Angular.Server.Controllers
         /// </summary>
         /// <returns>Rien</returns>
         /// DELETE api/<ProductsController>/5
-        [HttpDelete("{id}")]
-        public ActionResult DeleteProduct(int Id)
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> DeleteProduct(int Id)
         {
             try
             {
-                var product = _context.Products.Find(Id);
+                var product = await _context.Products.FindAsync(Id);
                 if (product == null)
                 {
                    return NotFound("Produit non trouvé");
                 }
                 _context.Products.Remove(product);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
-                return Ok("Produit supprimé avec succès");
+                return NoContent();
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Error deleting product: {ex.Message}");
                 return StatusCode(500, $"Une erreur s'est produite: {ex.Message}");
             }
         }
