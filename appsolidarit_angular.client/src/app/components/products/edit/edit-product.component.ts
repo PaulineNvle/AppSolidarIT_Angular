@@ -128,7 +128,7 @@ export class EditComponent {
     this.productService
       .deleteProductById(this.product.id)
       .subscribe({
-        next: () => this.router.navigate(['/products']),
+        next: () => this.router.navigate(['**']),
         error: (err) => console.error('Erreur de supression du produit: ', err)
     })
   }

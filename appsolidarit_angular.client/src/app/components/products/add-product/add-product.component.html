@@ -4,7 +4,7 @@
   <button routerLink="" type="button" class="btn">Retour</button>
 </div>
 
-<form #elseForm [formGroup]="productForm" (ngSubmit)="onSubmit()">
+<form  #elseForm [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="product-label">Quel est le nom de ce produit?</label>
     <input id="product-label" type="text" formControlName="label"/>
@@ -35,3 +35,4 @@
     <button routerLink="/products" class="goBack">Annuler</button>
   </div>
 </form>
+

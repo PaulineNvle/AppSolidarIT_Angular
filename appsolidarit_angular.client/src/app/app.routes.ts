@@ -33,6 +33,11 @@ export const routes: Routes = [
     'path': 'dialog/edit/:id',
     component: EditComponent,
     title: 'Editer un produit',
+  },
+  {
+    path: '**',
+    component: HomepageComponent,
+    title: 'Page d\'accueil',
   }
 ];
 @NgModule({

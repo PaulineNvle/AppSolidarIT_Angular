@@ -71,7 +71,7 @@ export class AddComponent {
         next: () => {
           console.log("Produit ajouté avec succès");
           this.productForm.reset();
-            this.router.navigate(['/product']);
+            this.router.navigate(['**']);
         },
         error: (error: HttpErrorResponse) => {
           console.error('Erreur lors de l\'ajout du produit:', error);
