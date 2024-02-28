@@ -1,10 +1,10 @@
-<div *ngIf="product">
+<div >
 
 
   <div>
     <h2> Detail de : {{product.label}}</h2>
   </div>
-  <form #elseForm [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
+  <form *ngIf="product" #elseForm [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
     <div>
       <label for="product-label">Quel est le nom de ce produit?</label>
       <input id="product-label" type="text" formControlName="label" />
@@ -18,7 +18,7 @@
         <option value="4">My Solidaris</option>
         <option value="5">Case Management</option>
       </select>
-      <div *ngIf="editProductForm.controls['themId'].errors && (editProductForm.controls['themeId'].dirty || editProductForm.controls['themeId'].touched)">
+      <div *ngIf="editProductForm.controls['themeId'].errors && (editProductForm.controls['themeId'].dirty || editProductForm.controls['themeId'].touched)">
         La thématique est requise
       </div>
     </div>
@@ -38,4 +38,4 @@
   <button (click)="onDelete()" id="delete-product">Supprimer le produit</button>
 </div>
 
-{{product | json}}
+<!--{{product | json}}-->

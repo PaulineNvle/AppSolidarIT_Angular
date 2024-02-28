@@ -94,6 +94,7 @@ export class EditComponent {
       const updateProduct = {
         id: Number(this.product.id),
         themeId: Number(this.editProductForm.controls["themeId"].value),
+        label: this.editProductForm.controls["label"].value,
         descriptionShort: this.editProductForm.controls["descriptionShort"].value,
         descriptionLong: this.editProductForm.controls["descriptionLong"].value
       }
