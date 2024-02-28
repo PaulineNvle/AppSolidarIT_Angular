@@ -76,15 +76,15 @@ export class EditComponent {
         return;
       };
       this.product = product,
-       console.log(product.label),
-       console.log(this.product);
-       this.editProductForm.controls["id"].setValue(product.id);
-       this.editProductForm.controls["label"].setValue(product.label);
-       this.editProductForm.controls["themeId"].setValue(product.themeId);
-       this.editProductForm.controls["descriptionShort"].setValue(product.descriptionShort);
-       this.editProductForm.controls["descriptionLong"].setValue(product.descriptionLong);
-      // this.editProductForm.patchValue(product);
-      //console.log(this.editProductForm.value);
+       //console.log(product.label),
+       //console.log(this.product);
+       //this.editProductForm.controls["id"].setValue(product.id);
+       //this.editProductForm.controls["label"].setValue(product.label);
+       //this.editProductForm.controls["themeId"].setValue(product.themeId);
+       //this.editProductForm.controls["descriptionShort"].setValue(product.descriptionShort);
+       //this.editProductForm.controls["descriptionLong"].setValue(product.descriptionLong);
+       this.editProductForm.patchValue(product);
+      console.log(this.editProductForm.value);
     });
     console.log(this.product);
   }
