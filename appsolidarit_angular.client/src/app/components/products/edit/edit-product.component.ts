@@ -105,7 +105,7 @@ export class EditComponent {
           next: () => {
             console.log("Produit ajouté avec succès");
             this.editProductForm.reset();
-            this.router.navigate(['/products']);
+            this.router.navigate(['']); 
           },
           error: (error: HttpErrorResponse) => {
             console.error('Erreur lors de l\'ajout du produit:', error);

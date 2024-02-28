@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
-import DetailsComponent from '../details-product/details-product.component';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
+import {
+  ActivatedRoute, 
+  RouterModule,
+  Router
+} from '@angular/router';
+
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from '../../../core/navigation/loader/loader.component';
 import { productService } from '../service/productService';
 import ProductsComponent from '../product-list/products.component';
 import { IProductCreate } from '../product-list/IProductsCreate';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,13 +25,11 @@ import { Router } from '@angular/router';
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css',
   imports: [
-    LoaderComponent,
     CommonModule,
     ProductsComponent,
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    DetailsComponent
   ],
   providers: [
     productService
@@ -33,7 +39,7 @@ export class AddComponent {
   productForm: FormGroup;
   title = "Ajouter un produit";
   isLoading: boolean = false;
-  product: IProductCreate | undefined;
+  product!: IProductCreate ;
 
   constructor(
     private productService: productService,
@@ -43,7 +49,7 @@ export class AddComponent {
   {
     this.productForm = this.fb.group({
       label: [''],
-      themeId: [null, Number, Validators.required],
+      themeId: [null, Validators.required],
       descriptionShort: [''],
       descriptionLong: ['']
     });
@@ -65,7 +71,7 @@ export class AddComponent {
         next: () => {
           console.log("Produit ajouté avec succès");
           this.productForm.reset();
-          this.router.navigate(['/products']);
+            this.router.navigate(['/product']);
         },
         error: (error: HttpErrorResponse) => {
           console.error('Erreur lors de l\'ajout du produit:', error);
