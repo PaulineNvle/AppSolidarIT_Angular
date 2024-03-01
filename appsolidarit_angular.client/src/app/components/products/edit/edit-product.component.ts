@@ -13,7 +13,6 @@ import { FormBuilder,
 import ProductsComponent from '../product-list/products.component';
 import DetailsComponent from '../details-product/details-product.component';
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from '../../../core/navigation/loader/loader.component';
 import { IProductUpdate } from '../../products/product-list/IProductsUpdate';
 import { productService } from '../service/productService';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -24,7 +23,6 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './edit-product.component.html',
   styleUrl: './edit-product.component.css',
   imports: [
-    LoaderComponent,
     CommonModule,
     ProductsComponent,
     DetailsComponent,

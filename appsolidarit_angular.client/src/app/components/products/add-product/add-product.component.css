@@ -1,22 +1,100 @@
-.btn {
-  padding: 4px;
-  width: 240px;
+
+
+/* Style général du formulaire */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+
+}
+
+/* titre */
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+
+/* label */
+.label {
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*Theme*/
+
+.theme {
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*description*/
+
+.description {
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
   height: 50px;
-  font-weight: bold;
-  background: #f2d9da;
+}
+
+
+/* Boutons d'action */
+.form-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  justify-content: space-between;
+  margin-right: 20px;
+  gap: 20px;
+}
+
+.goBack,
+#add-product {
+  padding: 4px;
+  background: #c1002a;
   border-style: none;
   border-radius: 5px;
   border-color: #c1002a;
-  color: #c1002a;
+  color: #f2d9da;
   background-position: 100%;
   background-size: 400%;
   -webkit-transition: background 200ms ease-in-out;
   transition: background 100ms ease-in-out;
 }
 
-  .btn:hover {
-    background-image: -webkit-linear-gradient(45deg, #c1002a 50%, transparent 50%);
-    background-image: linear-gradient(45deg, #c1002a 50%, transparent 50%);
+  .goBack:hover,
+  #add-product:hover {
+    background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
     background-position: 0;
-    color: #f2d9da;
+    color: #c1002a;
+  }
+/* Bouton retour */
+.btn {
+  float: right;
+  margin-right: 20px;
+  background-color: #c1002a;
+  color: #f2d9da;
+  padding: 4px;
+  border-style: none;
+  border-radius: 5px;
+  border-color: #c1002a;
+  cursor: pointer;
+  transition: background 200ms ease-in-out;
+}
+
+  .btn:hover {
+    background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
+    background-position: 0;
+    color: #c1002a;
   }

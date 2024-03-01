@@ -1,13 +1,13 @@
 <div>
   <div>
-    <h2> Detail de : </h2>
+    <h2> Detail de : {{product.label}} </h2>
   </div>
-  <form *ngIf="product" #elseForm [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
-    <div>
+  <form *ngIf="product" #elseForm [formGroup]="editProductForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="label">
       <label for="product-label">Quel est le nom de ce produit?</label>
       <input id="product-label" type="text" formControlName="label" />
     </div>
-    <div>
+    <div class="theme">
       <label for="product-themeId">Sélectionnez une thématique de produit:</label>
       <select id="product-themeId" formControlName="themeId">
         <option value="1">Business Management</option>
@@ -20,20 +20,21 @@
         La thématique est requise
       </div>
     </div>
-    <div>
+    <div class="description">
       <label for="product-descriptionShort">Décrivez de facon courte le produit</label>
       <input id="product-descriptionShort" type="text" formControlName="descriptionShort" />
     </div>
-    <div>
+    <div class="description">
       <label for="product-descriptionLong">Décrivez de facon complète</label>
       <input id="product-descriptionLong" type="text" formControlName="descriptionLong" />
     </div>
     <div class="form-buttons-container">
       <button type="submit" id="edit-product">Editer</button>
       <button routerLink="/products" class="goBack">Annuler</button>
+      <button (click)="onDelete()" id="delete-product">Supprimer le produit</button>
     </div>
   </form>
-  <button (click)="onDelete()" id="delete-product">Supprimer le produit</button>
+  
 </div>
 
 <!--{{product | json}}-->

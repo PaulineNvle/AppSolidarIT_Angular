@@ -4,30 +4,10 @@
   align-content: center;
   justify-content: flex-end;
 }
-.btn {
 
-  padding: 4px;
-  width: 240px;
-  height: 50px;
-  font-weight: bold;
-  background: #f2d9da;
-  border-style: none;
-  border-radius: 5px;
-  border-color: #c1002a;
-  color: #c1002a;
-  background-position: 100%;
-  background-size: 400%;
-  -webkit-transition: background 200ms ease-in-out;
-  transition: background 100ms ease-in-out;
+.title {
+    margin-left:10px;
 }
-  .btn:hover {
-    background-image: -webkit-linear-gradient(45deg, #c1002a 50%, transparent 50%);
-    background-image: linear-gradient(45deg, #c1002a 50%, transparent 50%);
-    background-position: 0;
-    color: #f2d9da;
-  }
-
-
 
 .container {
   display: flex;
@@ -37,13 +17,14 @@
   align-content: center;
   width: 100%;
   height: 80vh;
-  margin: 13px;
+
+  flex-direction: row;
 }
 
 .card {
   margin: 13px;
-  height: 250px;
-  width: 200px;
+ /* height: 250px;
+  width: 200px;*/
   border-radius: 12px;
   border-top: 2px solid rgb(125, 125, 125);
   border-left: 2px solid rgb(125, 125, 125);
@@ -63,7 +44,7 @@
   }
 
 
-.container .card .label {
+ .label {
   background-color: var(--c-white);
   margin: 4px;
   padding: 10px;
@@ -98,3 +79,25 @@
   font-family: 'Roboto Mono', monospace;
   font-weight: bolder ; 
 }
+.btn {
+  padding: 4px;
+  width: 240px;
+  height: 50px;
+  font-weight: bold;
+  background: #f2d9da;
+  border-style: none;
+  border-radius: 5px;
+  border-color: #c1002a;
+  color: #c1002a;
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 200ms ease-in-out;
+  transition: background 100ms ease-in-out;
+}
+
+  .btn:hover {
+    background-image: -webkit-linear-gradient(45deg, #c1002a 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #c1002a 50%, transparent 50%);
+    background-position: 0;
+    color: #f2d9da;
+  }

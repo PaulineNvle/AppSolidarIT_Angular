@@ -4,12 +4,12 @@
   <button routerLink="" type="button" class="btn">Retour</button>
 </div>
 
-<form  #elseForm [formGroup]="productForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="product-label">Quel est le nom de ce produit?</label>
+<form  #elseForm [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form">
+  <div class="label">
+    <label for="product-label">Quel est le nom de ce produit? </label>
     <input id="product-label" type="text" formControlName="label"/>
   </div>
-  <div>
+  <div class="theme">
     <label for="product-themeId">Sélectionnez une thématique de produit</label>
     <select id="product-themeId" formControlName="themeId">
       <option value="1">Business Management</option>
@@ -22,13 +22,13 @@
       La thématique est requise
     </div>
   </div>
-  <div>
-    <label for="product-descriptionShort">Décrivez de facon courte le produit</label>
+  <div class="description">
+    <label for="product-descriptionShort">Décrivez rapidement le produit</label>
     <input id="product-descriptionShort" type="text" formControlName="descriptionShort" />
   </div>
-  <div>
+  <div class="description">
     <label for="product-descriptionLong">Décrivez de facon complète</label>
-    <input id="product-descriptionLong" type="text" formControlName="descriptionLong" placeholder="Taille minimale de 10 char." />
+    <input id="product-descriptionLong" type="text" formControlName="descriptionLong" placeholder="Taille min. de 10 char." />
   </div>
   <div class="form-buttons-container">
     <button type="submit" id="add-product">Ajouter</button>

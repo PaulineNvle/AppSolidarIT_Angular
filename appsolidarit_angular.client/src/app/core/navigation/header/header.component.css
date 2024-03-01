@@ -22,11 +22,10 @@ mat-toolbar {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  flex: 1;
 }
 
-.central {
-  gap: 40px;
-}
+
 
 .btn {
   display: flex;
@@ -62,9 +61,6 @@ button {
 }
 
 
-
-
-
 /* button home - logout - profile */
 
 .little {
@@ -84,49 +80,6 @@ button {
     background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
     background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
     background-position: 0;
-  }
-
-/* button products */
-
-.first {
-  padding: 4px;
-  background: #f2d9da;
-  border-style: none;
-  border-radius: 5px;
-  border-color: #c1002a;
-  color: #c1002a;
-  background-position: 100%;
-  background-size: 400%;
-  -webkit-transition: background 200ms ease-in-out;
-  transition: background 100ms ease-in-out;
-}
-
-  .first:hover {
-    background-image: -webkit-linear-gradient(45deg, #c1002a 50%, transparent 50%);
-    background-image: linear-gradient(45deg, #c1002a 50%, transparent 50%);
-    background-position: 0;
-    color: #f2d9da;
-  }
-
-/* button details */
-.second {
-  padding: 4px;
-  background: #c1002a;
-  border-style: none;
-  border-radius: 5px;
-  border-color: #c1002a;
-  color: #f2d9da;
-  background-position: 100%;
-  background-size: 400%;
-  -webkit-transition: background 200ms ease-in-out;
-  transition: background 100ms ease-in-out;
-}
-
-  .second:hover {
-    background-image: -webkit-linear-gradient(45deg, #f2d9da 50%, transparent 50%);
-    background-image: linear-gradient(45deg, #f2d9da 50%, transparent 50%);
-    background-position: 0;
-    color: #c1002a;
   }
 
 /* burger */

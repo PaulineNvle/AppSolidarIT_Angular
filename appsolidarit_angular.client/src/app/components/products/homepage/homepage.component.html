@@ -2,20 +2,30 @@
 
 <div>
   <h2 class="homepage_title">Bienvenue chez SolidarIT !</h2>
+</div>
+<div class="form-buttons-container">
   <button routerLink="/dialog/add" type="button" class="btn">Ajouter un nouveau produit</button>
 </div>
 
 
-
 <div *ngIf="theme">
   <div class="container">
-    <div routerLink="/product/{{t.id}}" class="card"  *ngFor="let t of theme">
+    <div routerLink="/product/{{t.id}}" class="card" *ngFor="let t of theme">
       <div class="name">
         <h2>{{t.name}}</h2>
       </div>
       <div>
-        <img class="image" src="{{t.image}}" />
+        <img *ngIf="t.image" class="image" src="{{t.image}}" />
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+<div *ngIf="!(theme)">
+  <p>Chargement des produits...</p>
+  <span class="loader"></span>
+</div>
+

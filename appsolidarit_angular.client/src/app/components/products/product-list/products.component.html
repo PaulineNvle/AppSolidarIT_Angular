@@ -1,11 +1,15 @@
-<h2 class="products_title">Choisissez parmis nos différents services :</h2>
 
-<div class="backhome">
-  <button routerLink="" type="button" class="btn">Retour à la page précédente</button>
+
+<div class="title">
+
+  <h2 class="products_title">Choisissez parmis nos différents services :</h2>
+
+  <div class="backhome">
+    <button routerLink="" type="button" class="btn">Retour à la page précédente</button>
+  </div>
 </div>
 
-
-<div *ngIf="product$ | async as product">
+<div *ngIf="product$ | async as product" class="container">
   <div *ngFor="let prod of product">
     <!--{{prod |json}}-->
     <div routerLink="/details/{{prod.id}}" class="card">
@@ -14,7 +18,7 @@
       </div>
       <div class="information">
         <div>
-          <img class="image" src="{{prod.image}}" />
+          <img  *ngIf="prod.image" class="image" src="{{prod.image}}" />
         </div>
         <div style="text-align:center; padding: 6px">
           {{prod.descriptionShort}}
@@ -26,5 +30,6 @@
 
 <div *ngIf="!product$">
   <p>Chargement des détails des thématiques...</p>
+  <span class="loader"></span>
 </div>
 
