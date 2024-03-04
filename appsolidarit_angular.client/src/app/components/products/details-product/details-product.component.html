@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="backhome">
+    <div class="buttons-container">
       <button routerLink="/dialog/add" type="button" class="btn">Ajouter un nouveau produit</button>
       <button [routerLink]="'/dialog/edit/' + product.id" type="button" class="btn">Modifier</button>
     </div>
@@ -37,9 +37,6 @@
 
       <span>Date</span>
       <span>Texte explicatif</span>
-
-
-
     </div>
   </div>
   <div *ngIf="!(product$ | async)">

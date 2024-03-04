@@ -11,11 +11,19 @@ mat-toolbar {
   height: 100px;
 }
 
-.container {
+.left,
+.right {
   display: flex;
-  margin: 0px 30px;
+  align-items: center;
+}
+.right {
+  gap: 20px;
+}
+.left {
+  display: flex;
   flex-direction: row;
   gap: 20px;
+  padding-right: 10px;
 }
 
 .stuff {
@@ -24,8 +32,6 @@ mat-toolbar {
   gap: 20px;
   flex: 1;
 }
-
-
 
 .btn {
   display: flex;
@@ -44,6 +50,7 @@ button {
 .logo {
   max-width: 240px;
   height: 42px;
+  margin-left: 10px;
 }
 
   .logo:hover {
@@ -118,12 +125,14 @@ li.dropdown {
   position: absolute;
   background-color: #ffff;
   border-style: none;
-  border-radius: 5px;
+  border-radius:6px;
   background-position: 100%;
   background-size: 400%;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
 }
+
 
 .dropdown-link {
   color: black;
